@@ -22,7 +22,7 @@
         }
         .font-serif { font-family: 'Playfair Display', serif; }
         
-        /* Gold Color Fix */
+        /* Memastikan warna emas tetap menyala */
         .text-gold-deep { color: #B08D3E !important; }
 
         .glow-button {
@@ -179,13 +179,33 @@
             </p>
             <div class="marquee-container border-y border-[#3D342D]/10 py-8 md:py-12">
                 <div class="marquee space-x-4 md:space-x-6 items-center flex">
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span class="tool-name">Google Spreadsheet</span></div>
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg><span class="tool-name">Looker Studio</span></div>
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#10a37f" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><span class="tool-name">ChatGPT / Gemini</span></div>
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#00C4CC" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg><span class="tool-name">Canva</span></div>
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#21759B" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg><span class="tool-name">WordPress</span></div>
+                    <!-- Google Spreadsheet -->
+                    <div class="tool-item">
+                        <svg class="w-4 h-4 md:w-5 h-5" fill="#0F9D58" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                        <span class="tool-name">Google Spreadsheet</span>
+                    </div>
+                    <!-- Looker Studio -->
+                    <div class="tool-item">
+                        <svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        <span class="tool-name">Looker Studio</span>
+                    </div>
+                    <!-- AI Tools -->
+                    <div class="tool-item">
+                        <svg class="w-4 h-4 md:w-5 h-5" fill="#10a37f" viewBox="0 0 24 24"><path d="M22.28 12.17c-.12.44-.32.86-.59 1.23-.33.45-.76.83-1.25 1.11-.49.28-1.04.42-1.6.42-.56 0-1.11-.14-1.6-.42-.49-.28-.92-.66-1.25-1.11-.27-.37-.47-.79-.59-1.23h-1.4c.12 1.02.58 1.96 1.3 2.68.72.72 1.66 1.18 2.68 1.3V19c0 .55.45 1 1 1s1-.45 1-1v-2.65c1.02-.12 1.96-.58 2.68-1.3.72-.72 1.18-1.66 1.3-2.68h-1.4zM12 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/></svg>
+                        <span class="tool-name">ChatGPT / Gemini</span>
+                    </div>
+                    <!-- Canva -->
+                    <div class="tool-item">
+                        <svg class="w-4 h-4 md:w-5 h-5" fill="#00C4CC" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+                        <span class="tool-name">Canva</span>
+                    </div>
+                    <!-- WordPress -->
+                    <div class="tool-item">
+                        <svg class="w-4 h-4 md:w-5 h-5" fill="#21759B" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>
+                        <span class="tool-name">WordPress</span>
+                    </div>
                     <!-- Repeated for continuous scroll -->
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span class="tool-name">Google Spreadsheet</span></div>
+                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#0F9D58" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span class="tool-name">Google Spreadsheet</span></div>
                     <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg><span class="tool-name">Looker Studio</span></div>
                 </div>
             </div>
@@ -199,8 +219,8 @@
                 <div class="relative group">
                     <div class="absolute -inset-1 bg-gradient-to-tr from-[#B08D3E] to-[#E2B13C] rounded-full blur opacity-10 group-hover:opacity-40 transition duration-1000"></div>
                     <div class="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border border-[#B08D3E]/20 bg-[#EDE8DE] shadow-sm">
-                        <!-- Updated to Absolute URL to fix visibility in preview -->
-                        <img src="https://raw.githubusercontent.com/islanisaaa/portfolio/main/dispict.png" alt="Annisa Islamiasih" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <!-- Menggunakan link GitHub Pages yang lebih stabil -->
+                        <img src="https://islanisaaa.github.io/portfolio/dispict.png" alt="Annisa Islamiasih" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='dispict.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
                         <div class="hidden w-full h-full flex items-center justify-center text-[#B08D3E]/30 font-bold uppercase tracking-widest text-[10px]">
                             [Photo]
                         </div>
@@ -230,7 +250,7 @@
         </div>
         
         <div class="grid gap-24 md:gap-48">
-            <!-- Case 1: Landscape (L) -->
+            <!-- Case 1: Landscape -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-7">
                     <div class="video-landscape glow-card">
@@ -248,7 +268,7 @@
                 </div>
             </section>
 
-            <!-- Case 2: Portrait (R) -->
+            <!-- Case 2: Portrait -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-6 md:col-start-2 order-2 md:order-1 text-center md:text-right">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 02 • Data Insight</span>
@@ -266,7 +286,7 @@
                 </div>
             </section>
 
-            <!-- Case 3: Landscape (L) -->
+            <!-- Case 3: Landscape -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-7">
                     <div class="video-landscape glow-card">
@@ -284,7 +304,7 @@
                 </div>
             </section>
 
-            <!-- Case 4: Portrait (R) -->
+            <!-- Case 4: Portrait -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-6 md:col-start-2 order-2 md:order-1 text-center md:text-right">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 04 • Automation</span>
@@ -302,7 +322,7 @@
                 </div>
             </section>
 
-            <!-- Case 5: Landscape (L) -->
+            <!-- Case 5: Landscape -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-7">
                     <div class="video-landscape glow-card">
@@ -320,7 +340,7 @@
                 </div>
             </section>
 
-            <!-- Case 6: Case Study Communication (R) -->
+            <!-- Case 6: VIP Support -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-5 order-2 md:order-1 text-center md:text-right">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 06 • Client Management</span>
