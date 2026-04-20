@@ -22,7 +22,7 @@
         }
         .font-serif { font-family: 'Playfair Display', serif; }
         
-        /* Memastikan warna emas tetap menyala */
+        /* Memastikan warna emas tetap menyala dan solid */
         .text-gold-deep { color: #B08D3E !important; }
 
         .glow-button {
@@ -50,7 +50,7 @@
 
         html { scroll-behavior: smooth; }
 
-        /* Video Containers Responsive */
+        /* Wadah Video Responsif */
         .video-landscape {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 */
@@ -76,7 +76,7 @@
             border: none;
         }
 
-        /* Tool Icon Scrolling Marquee */
+        /* Marquee Ikon Alat */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -136,7 +136,7 @@
 </head>
 <body class="antialiased">
 
-    <!-- Navigation -->
+    <!-- Navigasi -->
     <nav class="max-w-7xl mx-auto px-6 py-8 md:py-10 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
         <div class="font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-[#B08D3E]">
             YOUR MODERN ADMIN<span class="opacity-30">.</span>
@@ -150,7 +150,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Bagian Hero -->
     <header class="max-w-7xl mx-auto px-6 pt-10 md:pt-12 pb-20 md:pb-24 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-64 h-64 bg-[#B08D3E] opacity-[0.03] rounded-full -ml-32 -mt-32 blur-3xl"></div>
         <div class="max-w-5xl relative z-10">
@@ -171,7 +171,7 @@
         </div>
     </header>
 
-    <!-- Tool Marquee -->
+    <!-- Marquee Alat -->
     <section class="mb-20 md:mb-32 px-6">
         <div class="max-w-7xl mx-auto">
             <p class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] text-[#B08D3E] mb-6 md:mb-8 opacity-60 text-center md:text-left italic">
@@ -204,7 +204,7 @@
                         <svg class="w-4 h-4 md:w-5 h-5" fill="#21759B" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>
                         <span class="tool-name">WordPress</span>
                     </div>
-                    <!-- Repeated for continuous scroll -->
+                    <!-- Duplikasi untuk scroll tak terbatas -->
                     <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#0F9D58" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span class="tool-name">Google Spreadsheet</span></div>
                     <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg><span class="tool-name">Looker Studio</span></div>
                 </div>
@@ -212,15 +212,15 @@
         </div>
     </section>
 
-    <!-- Professional Profile -->
+    <!-- Profil Profesional -->
     <section id="about" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
         <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
             <div class="md:col-span-4 flex flex-col items-center">
                 <div class="relative group">
                     <div class="absolute -inset-1 bg-gradient-to-tr from-[#B08D3E] to-[#E2B13C] rounded-full blur opacity-10 group-hover:opacity-40 transition duration-1000"></div>
                     <div class="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border border-[#B08D3E]/20 bg-[#EDE8DE] shadow-sm">
-                        <!-- Menggunakan link GitHub Pages yang lebih stabil -->
-                        <img src="https://islanisaaa.github.io/portfolio/dispict.png" alt="Annisa Islamiasih" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='dispict.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
+                        <!-- Alamat absolut GitHub agar foto pasti muncul -->
+                        <img src="https://raw.githubusercontent.com/islanisaaa/portfolio/main/dispict.png" alt="Annisa Islamiasih" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='dispict.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='flex';}">
                         <div class="hidden w-full h-full flex items-center justify-center text-[#B08D3E]/30 font-bold uppercase tracking-widest text-[10px]">
                             [Photo]
                         </div>
@@ -230,8 +230,8 @@
             <div class="md:col-span-8 text-center md:text-left">
                 <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-6 md:mb-8">Professional Profile</h2>
                 <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 text-[#3D342D] leading-[1.1]">
-                    Annisa Islamiasih. <br/>
-                    <span class="font-serif italic text-gold-deep">Modern Admin Strategist.</span>
+                    Annisa Islamiasih <br/>
+                    <span class="font-serif italic text-gold-deep headline-accent">Modern Admin Strategist</span>
                 </h3>
                 <div class="space-y-4 md:space-y-6 text-base md:text-lg text-[#6B5E54] leading-relaxed max-w-2xl mx-auto md:mx-0">
                     <p>Since 2011, I’ve worked across high-pressure B2B environments, from manufacturing to large-scale distribution. I’ve seen how manual, unstructured operations slow businesses down, and watched how the right systems can change everything.</p>
@@ -242,7 +242,7 @@
         </div>
     </section>
 
-    <!-- Showcases Gallery (STRICT ZIG-ZAG) -->
+    <!-- Galeri Showcase (ZIG-ZAG) -->
     <main id="projects" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
         <div class="flex items-center justify-between mb-16 md:mb-24">
             <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E]">Showcases</h2>
@@ -250,7 +250,7 @@
         </div>
         
         <div class="grid gap-24 md:gap-48">
-            <!-- Case 1: Landscape -->
+            <!-- Kasus 1: Landscape -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-7">
                     <div class="video-landscape glow-card">
@@ -268,7 +268,7 @@
                 </div>
             </section>
 
-            <!-- Case 2: Portrait -->
+            <!-- Kasus 2: Portrait -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-6 md:col-start-2 order-2 md:order-1 text-center md:text-right">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 02 • Data Insight</span>
@@ -286,7 +286,7 @@
                 </div>
             </section>
 
-            <!-- Case 3: Landscape -->
+            <!-- Kasus 3: Landscape -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-7">
                     <div class="video-landscape glow-card">
@@ -304,7 +304,7 @@
                 </div>
             </section>
 
-            <!-- Case 4: Portrait -->
+            <!-- Kasus 4: Portrait -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-6 md:col-start-2 order-2 md:order-1 text-center md:text-right">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 04 • Automation</span>
@@ -322,7 +322,7 @@
                 </div>
             </section>
 
-            <!-- Case 5: Landscape -->
+            <!-- Kasus 5: Landscape -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-7">
                     <div class="video-landscape glow-card">
@@ -340,7 +340,7 @@
                 </div>
             </section>
 
-            <!-- Case 6: VIP Support -->
+            <!-- Kasus 6: VIP Support -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-5 order-2 md:order-1 text-center md:text-right">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 06 • Client Management</span>
@@ -361,7 +361,7 @@
         </div>
     </main>
 
-    <!-- AI Consultant Section -->
+    <!-- Bagian Konsultan AI -->
     <section id="ai-consultant" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
         <div class="bg-white rounded-[2rem] md:rounded-[3rem] p-6 md:p-16 border border-[#B08D3E]/20 shadow-xl overflow-hidden relative">
             <div class="absolute top-0 right-0 w-64 h-64 bg-[#B08D3E]/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
@@ -405,7 +405,7 @@
         </div>
     </footer>
 
-    <!-- AI Logic Script -->
+    <!-- Script Logika AI -->
     <script>
         const apiKey = ""; 
 
