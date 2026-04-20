@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Annisa Islamiasih | Your Modern Admin</title>
+    <title>Annisa Islamiasih | Your Modern Admin Strategist</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -23,7 +23,7 @@
         }
         .font-serif { font-family: 'Playfair Display', serif; }
         
-        /* Memastikan warna emas tetap menyala */
+        /* Gold Accent Fix */
         .text-gold-deep { color: #B08D3E !important; }
 
         .glow-button {
@@ -51,6 +51,48 @@
 
         html { scroll-behavior: smooth; }
 
+        /* --- ANIMASI PENDARAN FOTO (REVISI) --- */
+        @keyframes rotate-glow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .glow-wrapper {
+            position: relative;
+            padding: 8px; /* Ketebalan pendaran */
+            border-radius: 9999px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+        }
+
+        /* Garis pendaran emas yang berputar */
+        .glow-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: conic-gradient(from 0deg, transparent, transparent 60%, var(--gold-deep), var(--gold-accent), transparent);
+            animation: rotate-glow 3s linear infinite;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .glow-wrapper:hover::before {
+            opacity: 1;
+        }
+
+        .photo-inner {
+            position: relative;
+            z-index: 10;
+            background-color: var(--bg-sand);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+        /* ------------------------------------- */
+
         /* Video Containers */
         .video-landscape {
             position: relative;
@@ -70,14 +112,7 @@
             background: #EDE8DE;
         }
 
-        .video-landscape iframe, .video-portrait iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover;
-            border: none;
-        }
-
-        /* Marquee Alat */
+        /* Marquee Scrolling */
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -119,7 +154,13 @@
             white-space: nowrap;
         }
 
-        /* Garis bawah hanya untuk Hero Section */
+        /* Shadowless accent for the About section */
+        .modern-admin-title {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Headline accent with underline for Hero section only */
         .headline-accent {
             position: relative;
             display: inline-block;
@@ -211,19 +252,21 @@
     <section id="about" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
         <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
             <div class="md:col-span-4 flex justify-center">
-                <div class="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border border-[#B08D3E]/20 bg-[#EDE8DE] shadow-sm">
-                    <!-- FOTO FIX: Menggunakan dispict.jpeg dan link absolut GitHub -->
-                    <img src="dispict.jpeg" 
-                         alt="Annisa Islamiasih" 
-                         class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                         onerror="this.onerror=null; this.src='https://islanisaaa.github.io/portfolio/dispict.jpeg';">
+                <div class="glow-wrapper group w-52 h-52 md:w-60 md:h-60 lg:w-68 lg:h-68">
+                    <div class="photo-inner w-full h-full rounded-full overflow-hidden border border-[#B08D3E]/20 bg-[#EDE8DE] shadow-sm">
+                        <!-- FOTO JPEG: Warna Asli & Pendaran Hover -->
+                        <img src="dispict.jpeg" 
+                             alt="Annisa Islamiasih" 
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             onerror="this.onerror=null; this.src='https://islanisaaa.github.io/portfolio/dispict.jpeg';">
+                    </div>
                 </div>
             </div>
             <div class="md:col-span-8 text-center md:text-left mt-10 md:mt-0">
                 <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-6 md:mb-8">Professional Profile</h2>
                 <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 text-[#3D342D] leading-[1.1] pt-2">
                     Annisa Islamiasih <br/>
-                    <span class="font-serif italic text-gold-deep">Modern Admin Strategist</span>
+                    <span class="font-serif italic text-gold-deep modern-admin-title">Modern Admin Strategist</span>
                 </h3>
                 <div class="space-y-4 md:space-y-6 text-base md:text-lg text-[#6B5E54] leading-relaxed max-w-2xl mx-auto md:mx-0">
                     <p>Since 2011, I’ve worked across high-pressure B2B environments, from manufacturing to large-scale distribution. I’ve seen how manual, unstructured operations slow businesses down, and watched how the right systems can change everything.</p>
@@ -242,7 +285,7 @@
         </div>
         
         <div class="grid gap-24 md:gap-48">
-            <!-- Part 1: Ticketing -->
+            <!-- Case 1 -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-7">
                     <div class="video-landscape glow-card">
@@ -253,19 +296,18 @@
                 </div>
                 <div class="md:col-span-5">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 01 • Operations</span>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-4">Centralized Ticketing Hub</h3>
-                    <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg">Consolidated manual ticketing processes into a centralized ecosystem for better accountability.</p>
+                    <h3 class="text-3xl font-bold mb-4">Centralized Ticketing Hub</h3>
+                    <p class="text-[#6B5E54] leading-relaxed">Consolidating manual ticketing processes into a centralized ecosystem for better accountability.</p>
                 </div>
             </section>
-
-            <!-- Part 2: Dashboard -->
+            <!-- Case 2 -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
-                <div class="md:col-span-6 md:col-start-2 order-2 md:order-1 text-center md:text-right">
+                <div class="md:col-span-5 text-right order-2 md:order-1">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 02 • Data Insight</span>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-4 font-serif italic text-gold-deep">Community Dashboard</h3>
-                    <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg md:ml-auto max-w-sm">Mobile-first Looker Studio dashboard for real-time engagement and broadcast performance tracking.</p>
+                    <h3 class="text-3xl font-bold mb-4 font-serif italic text-gold-deep">Community Dashboard</h3>
+                    <p class="text-[#6B5E54] leading-relaxed max-w-sm ml-auto">Mobile-first performance tracking for broadcast communities using Looker Studio.</p>
                 </div>
-                <div class="md:col-span-4 order-1 md:order-2">
+                <div class="md:col-span-4 md:col-start-8 order-1 md:order-2">
                     <div class="video-portrait glow-card mx-auto max-w-xs md:max-w-none">
                         <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] p-6 text-center uppercase font-bold">
                             [Portrait Demo: Dashboard]
@@ -273,68 +315,49 @@
                     </div>
                 </div>
             </section>
-
-            <!-- Part 3: GSheet Invoice -->
+            <!-- Case 3 -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-7">
-                    <div class="video-landscape glow-card">
-                        <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] md:text-xs p-8 text-center uppercase tracking-widest font-bold">
-                            [Landscape Demo: GSheet Invoice]
-                        </div>
-                    </div>
+                    <div class="video-landscape glow-card"></div>
                 </div>
                 <div class="md:col-span-5">
-                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 03 • Finance Admin</span>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-4">Global Billing Templates</h3>
-                    <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg">Automated international billing templates with currency conversion built on Google Sheets.</p>
+                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 03 • Finance</span>
+                    <h3 class="text-3xl font-bold mb-4">Global Billing Templates</h3>
+                    <p class="text-[#6B5E54] leading-relaxed">Automated international billing with currency conversion directly in Google Sheets.</p>
                 </div>
             </section>
-
-            <!-- Part 4: GForm Automated -->
+            <!-- Case 4 -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
-                <div class="md:col-span-6 md:col-start-2 order-2 md:order-1 text-center md:text-right">
+                <div class="md:col-span-5 text-right order-2 md:order-1">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 04 • Automation</span>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-4 font-serif italic text-gold-deep">Instant Form-to-Invoice</h3>
-                    <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg md:ml-auto max-w-sm">A zero-touch flow converting Google Form submissions into professional PDF invoices automatically.</p>
+                    <h3 class="text-3xl font-bold mb-4 font-serif italic text-gold-deep">Form-to-Invoice Flow</h3>
+                    <p class="text-[#6B5E54] leading-relaxed max-w-sm ml-auto">From Google Form submission to fully generated PDF invoice automatically.</p>
                 </div>
-                <div class="md:col-span-4 order-1 md:order-2">
-                    <div class="video-portrait glow-card mx-auto max-w-xs md:max-w-none">
-                        <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] p-6 text-center uppercase font-bold">
-                            [Portrait Demo: GForm Flow]
-                        </div>
-                    </div>
+                <div class="md:col-span-4 md:col-start-8 order-1 md:order-2">
+                    <div class="video-portrait glow-card mx-auto max-w-xs md:max-w-none"></div>
                 </div>
             </section>
-
-            <!-- Part 5: Web Presence -->
+            <!-- Case 5 -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-7">
-                    <div class="video-landscape glow-card">
-                        <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] md:text-xs p-8 text-center uppercase tracking-widest font-bold">
-                            [Landscape Demo: Website]
-                        </div>
-                    </div>
+                    <div class="video-landscape glow-card"></div>
                 </div>
                 <div class="md:col-span-5">
-                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 05 • Web Dev</span>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-4">Functional Web Presence</h3>
-                    <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg">WordPress-based company extensions integrated with backend inquiry systems.</p>
+                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 05 • Web</span>
+                    <h3 class="text-3xl font-bold mb-4">Functional Web Presence</h3>
+                    <p class="text-[#6B5E54] leading-relaxed">WordPress extension for small businesses integrated with backend systems.</p>
                 </div>
             </section>
-
-            <!-- Part 6: VIP Support -->
+            <!-- Case 6 -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
-                <div class="md:col-span-5 order-2 md:order-1 text-center md:text-right">
-                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 06 • Management</span>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-4 font-serif italic text-gold-deep">High-Stakes VIP Support</h3>
-                    <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg md:ml-auto max-w-sm">Managing complex B2B relationships with elite English communication and luxury sales support.</p>
+                <div class="md:col-span-5 text-right order-2 md:order-1">
+                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 06 • VIP Support</span>
+                    <h3 class="text-3xl font-bold mb-4 font-serif italic text-gold-deep">High-Stakes VIP Support</h3>
+                    <p class="text-[#6B5E54] max-w-sm ml-auto">Elite B2B relationship management and luxury sales communication.</p>
                 </div>
                 <div class="md:col-span-7 order-1 md:order-2">
-                    <div class="video-landscape glow-card overflow-hidden bg-white flex items-center justify-center">
-                        <div class="text-center p-12">
-                            <svg class="w-16 h-16 text-[#B08D3E]/20 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-[#B08D3E]/40">[Case Study: VIP Communication PDF]</span>
-                        </div>
+                    <div class="video-landscape glow-card bg-white flex items-center justify-center">
+                         <span class="text-[10px] font-bold uppercase tracking-widest opacity-20">[Case Study PDF]</span>
                     </div>
                 </div>
             </section>
@@ -349,23 +372,16 @@
                 <div>
                     <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-6">Interactive Demo</h2>
                     <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-[#3D342D]">Try My AI Consultant ✨</h3>
-                    <p class="text-base md:text-lg text-[#6B5E54] mb-8">
-                        Describe one messy administrative task. My AI assistant will suggest a modern solution using my specific toolkit.
-                    </p>
+                    <p class="text-base md:text-lg text-[#6B5E54] mb-8">Describe one messy administrative task. My AI assistant will suggest a modern solution.</p>
                     <div class="space-y-4">
                         <textarea id="ai-input" class="w-full bg-[#F9F7F2] border border-[#B08D3E]/20 rounded-2xl p-5 md:p-6 text-[#3D342D] focus:outline-none focus:border-[#B08D3E]" rows="3" placeholder="e.g. 'I struggle with tracking receipts...'"></textarea>
-                        <button id="ai-submit" onclick="generateAutomationSolution()" class="bg-[#B08D3E] text-white px-8 py-4 rounded-2xl font-bold text-sm tracking-widest uppercase hover:shadow-[0_0_25px_rgba(176,141,62,0.4)] transition-all w-full">
-                            Ask for Solution ✨
-                        </button>
+                        <button id="ai-submit" onclick="generateAutomationSolution()" class="bg-[#B08D3E] text-white px-8 py-4 rounded-2xl font-bold text-sm tracking-widest uppercase hover:shadow-[0_0_25px_rgba(176,141,62,0.4)] transition-all w-full">Ask for Solution ✨</button>
                     </div>
                 </div>
-                <div class="bg-[#F9F7F2] rounded-3xl p-6 md:p-8 min-h-[250px] md:min-h-[300px] border border-dashed border-[#B08D3E]/30">
-                    <div id="ai-output" class="text-[#6B5E54] leading-relaxed text-sm md:text-base">
+                <div class="bg-[#F9F7F2] rounded-3xl p-6 md:p-8 min-h-[250px] border border-dashed border-[#B08D3E]/30">
+                    <div id="ai-output" class="text-[#6B5E54] text-sm leading-relaxed">
                         <p id="ai-placeholder" class="italic opacity-50">Solution will appear here...</p>
-                        <div id="ai-loading" class="hidden flex items-center gap-2">
-                            <div class="animate-spin h-4 w-4 border-2 border-[#B08D3E] border-t-transparent rounded-full"></div>
-                            <span>Analyzing...</span>
-                        </div>
+                        <div id="ai-loading" class="hidden"><div class="animate-spin h-4 w-4 border-2 border-[#B08D3E] border-t-transparent rounded-full inline-block mr-2"></div>Analyzing...</div>
                         <div id="ai-response-text" class="hidden whitespace-pre-wrap"></div>
                     </div>
                 </div>
@@ -374,75 +390,59 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-[#3D342D] py-24 md:py-40 px-6 rounded-t-[3rem] md:rounded-t-[4rem] text-center">
+    <footer id="contact" class="bg-[#3D342D] py-24 md:py-40 px-6 rounded-t-[3rem] text-center text-[#FAF3E0]">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-10 tracking-tighter text-white leading-tight">Ready to <span class="font-serif italic text-gold-deep">scale</span> <br class="hidden sm:block"/>without the stress?</h2>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6">
-                <a href="mailto:hello@annisa.com" class="w-full sm:w-auto bg-[#B08D3E] text-white px-10 md:px-12 py-4 md:py-5 rounded-2xl font-bold text-xs md:text-sm tracking-widest uppercase hover:shadow-[0_0_40px_rgba(176,141,62,0.3)] transition-all">Email Me</a>
-                <a href="#" class="w-full sm:w-auto border border-[#B08D3E]/40 px-10 md:px-12 py-4 md:py-5 rounded-2xl font-bold text-xs md:text-sm tracking-widest uppercase text-[#B08D3E] hover:bg-white/5 transition-all">WhatsApp</a>
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-10 text-white leading-tight">Ready to <span class="font-serif italic text-gold-deep">scale</span>?</h2>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <a href="mailto:hello@annisa.com" class="bg-[#B08D3E] text-white px-12 py-5 rounded-2xl font-bold uppercase tracking-widest shadow-xl">Email Me</a>
+                <a href="#" class="border border-[#B08D3E]/40 px-12 py-5 rounded-2xl font-bold uppercase text-[#B08D3E]">WhatsApp</a>
             </div>
-            <p class="mt-16 md:mt-20 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.5em] opacity-30 text-[#FAF3E0]">© 2025 Annisa Islamiasih • Your Modern Admin</p>
+            <p class="mt-20 text-[9px] font-bold uppercase tracking-[0.5em] opacity-30">© 2025 Annisa Islamiasih • Your Modern Admin</p>
         </div>
     </footer>
 
-    <!-- Script Logika AI -->
     <script>
         const apiKey = ""; 
-
         async function generateAutomationSolution() {
             const input = document.getElementById('ai-input').value;
-            if (!input.trim()) return;
-
+            const res = document.getElementById('ai-response-text');
             const placeholder = document.getElementById('ai-placeholder');
             const loading = document.getElementById('ai-loading');
-            const responseText = document.getElementById('ai-response-text');
             const submitBtn = document.getElementById('ai-submit');
-
+            
+            if(!input.trim()) return;
+            
             placeholder.classList.add('hidden');
             loading.classList.remove('hidden');
-            responseText.classList.add('hidden');
+            res.classList.add('hidden');
             submitBtn.disabled = true;
 
-            const systemPrompt = `You are Annisa's Modern Admin Assistant. Annisa (Islamiasih) is an expert with 15+ years in B2B ops. Her tools: Google Workspace, AI, Looker Studio. Provide a professional, friendly 3-step automation solution in English. Keep it brief and encourage them to contact Annisa for implementation.`;
+            const systemPrompt = `You are Annisa's Modern Admin Assistant. Annisa (Islamiasih) is an expert in B2B ops. Provide a brief, friendly 3-step automation solution in English using Google Workspace & AI. Encourage them to contact Annisa.`;
 
-            let retries = 0;
-            const maxRetries = 5;
+            try {
+                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: input }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                    })
+                });
 
-            async function callApi(delay) {
-                try {
-                    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            contents: [{ parts: [{ text: input }] }],
-                            systemInstruction: { parts: [{ text: systemPrompt }] }
-                        })
-                    });
+                const data = await response.json();
+                const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
-                    if (!response.ok) throw new Error('API Error');
-
-                    const data = await response.json();
-                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                    loading.classList.add('hidden');
-                    responseText.innerText = text;
-                    responseText.classList.remove('hidden');
-                } catch (error) {
-                    if (retries < maxRetries) {
-                        retries++;
-                        setTimeout(() => callApi(delay * 2), delay);
-                    } else {
-                        loading.classList.add('hidden');
-                        responseText.innerText = "Connection issue. Please message me directly!";
-                        responseText.classList.remove('hidden');
-                    }
-                } finally {
-                    submitBtn.disabled = false;
-                }
+                loading.classList.add('hidden');
+                res.innerText = text;
+                res.classList.remove('hidden');
+            } catch (error) {
+                loading.classList.add('hidden');
+                res.innerText = "Connection issue. Please contact Annisa directly!";
+                res.classList.remove('hidden');
+            } finally {
+                submitBtn.disabled = false;
             }
-            callApi(1000);
         }
     </script>
-
 </body>
 </html>
