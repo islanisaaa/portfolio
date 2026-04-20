@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Annisa | Your Modern Admin</title>
+    <title>Annisa Islamiasih | Your Modern Admin</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -19,7 +21,9 @@
             color: var(--text-ebony); 
         }
         .font-serif { font-family: 'Playfair Display', serif; }
-        .text-gold-deep { color: var(--gold-deep); }
+        
+        /* Gold Color Fix */
+        .text-gold-deep { color: #B08D3E !important; }
 
         .glow-button {
             background-color: transparent;
@@ -56,10 +60,6 @@
             background: #EDE8DE;
         }
 
-        @media (min-width: 1024px) {
-            .video-landscape { border-radius: 2rem; }
-        }
-
         .video-portrait {
             position: relative;
             padding-bottom: 177.78%; /* 9:16 */
@@ -69,8 +69,7 @@
             background: #EDE8DE;
         }
 
-        .video-landscape iframe, .video-landscape video,
-        .video-portrait iframe, .video-portrait video {
+        .video-landscape iframe, .video-portrait iframe {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
@@ -85,7 +84,7 @@
         .marquee {
             display: flex;
             width: fit-content;
-            animation: scroll 80s linear infinite;
+            animation: scroll 60s linear infinite;
         }
         .marquee-container {
             overflow: hidden;
@@ -104,15 +103,11 @@
             filter: grayscale(1);
             opacity: 0.4;
         }
-        @media (min-width: 768px) {
-            .tool-item { gap: 0.75rem; padding: 0.75rem 1.5rem; }
-        }
         .tool-item:hover {
             filter: grayscale(0);
             opacity: 1;
             background: white;
             border-color: var(--gold-deep);
-            box-shadow: 0 4px 12px rgba(176, 141, 62, 0.1);
         }
         .tool-name {
             font-size: 9px;
@@ -122,11 +117,7 @@
             color: #6B5E54;
             white-space: nowrap;
         }
-        @media (min-width: 768px) {
-            .tool-name { font-size: 10px; }
-        }
 
-        /* Decorative underline for headline */
         .headline-accent {
             position: relative;
             display: inline-block;
@@ -138,13 +129,14 @@
             left: 0;
             width: 100%;
             height: 0.15em;
-            background-color: rgba(176, 141, 62, 0.2);
+            background-color: rgba(176, 141, 62, 0.15);
             z-index: -1;
         }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- Navigation -->
     <nav class="max-w-7xl mx-auto px-6 py-8 md:py-10 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
         <div class="font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-[#B08D3E]">
             YOUR MODERN ADMIN<span class="opacity-30">.</span>
@@ -158,9 +150,9 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <header class="max-w-7xl mx-auto px-6 pt-10 md:pt-12 pb-20 md:pb-24 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-64 h-64 bg-[#B08D3E] opacity-[0.03] rounded-full -ml-32 -mt-32 blur-3xl"></div>
-        
         <div class="max-w-5xl relative z-10">
             <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 md:mb-10 text-[8px] md:text-[9px] font-bold tracking-[0.3em] uppercase bg-[#B08D3E]/10 text-[#B08D3E] rounded-full border border-[#B08D3E]/20">
                 <span class="relative flex h-2 w-2">
@@ -169,42 +161,47 @@
                 </span>
                 Available for worldwide projects
             </div>
-            
             <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold leading-[1.2] mb-8 md:mb-10 text-[#3D342D] tracking-tighter max-w-4xl">
                 Transforming manual admin into <br class="hidden md:block"/>
                 <span class="font-serif italic text-gold-deep headline-accent">integrated, automated</span> systems.
             </h1>
-            
             <p class="text-base md:text-lg lg:text-xl text-[#6B5E54] mb-10 md:mb-12 leading-relaxed max-w-2xl font-light">
                 With 15+ years of experience in B2B distribution and manufacturing, I turn repetitive, manual processes into efficient, connected systems that grow with your business.
             </p>
         </div>
     </header>
 
+    <!-- Tool Marquee -->
     <section class="mb-20 md:mb-32 px-6">
         <div class="max-w-7xl mx-auto">
+            <p class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] text-[#B08D3E] mb-6 md:mb-8 opacity-60 text-center md:text-left">
+                Tools I use to power your business workflow:
+            </p>
             <div class="marquee-container border-y border-[#3D342D]/10 py-8 md:py-12">
                 <div class="marquee space-x-4 md:space-x-6 items-center flex">
+                    <!-- Example Tool Items - Repeat these with your Icons -->
                     <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span class="tool-name">Google Spreadsheet</span></div>
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6z"/></svg><span class="tool-name">Google Docs</span></div>
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#EA4335" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg><span class="tool-name">Gmail</span></div>
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg><span class="tool-name">Google Calendar</span></div>
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#FBBC05" viewBox="0 0 24 24"><path d="M15.75 5H8.25L3 14h18l-5.25-9z"/></svg><span class="tool-name">Google Drive</span></div>
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span class="tool-name">Looker Studio</span></div>
+                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg><span class="tool-name">Looker Studio</span></div>
                     <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#10a37f" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><span class="tool-name">ChatGPT</span></div>
                     <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#00C4CC" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg><span class="tool-name">Canva</span></div>
+                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#21759B" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg><span class="tool-name">WordPress</span></div>
+                    <!-- Repeated for continuous scroll -->
+                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span class="tool-name">Google Spreadsheet</span></div>
+                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg><span class="tool-name">Looker Studio</span></div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Professional Profile -->
     <section id="about" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
         <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
             <div class="md:col-span-4 flex flex-col items-center">
                 <div class="relative group">
                     <div class="absolute -inset-1 bg-gradient-to-tr from-[#B08D3E] to-[#E2B13C] rounded-full blur opacity-10 group-hover:opacity-40 transition duration-1000"></div>
                     <div class="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border border-[#B08D3E]/20 bg-[#EDE8DE] shadow-sm">
-                        <div class="w-full h-full flex items-center justify-center text-[#B08D3E]/30 font-bold uppercase tracking-widest text-[10px]">
+                        <img src="dispict.png" alt="Annisa Islamiasih" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="hidden w-full h-full flex items-center justify-center text-[#B08D3E]/30 font-bold uppercase tracking-widest text-[10px]">
                             [Photo]
                         </div>
                     </div>
@@ -213,55 +210,19 @@
             <div class="md:col-span-8 text-center md:text-left">
                 <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-6 md:mb-8">Professional Profile</h2>
                 <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 text-[#3D342D] leading-[1.1]">
-                    Annisa. <br/>
+                    Annisa Islamiasih. <br/>
                     <span class="font-serif italic text-gold-deep">Modern Admin Strategist.</span>
                 </h3>
                 <div class="space-y-4 md:space-y-6 text-base md:text-lg text-[#6B5E54] leading-relaxed max-w-2xl mx-auto md:mx-0">
-                    <p>
-                        Since 2011, I’ve navigated high-pressure environments from jewelry manufacturing to global distribution. I understand that business longevity is built on systems that actually work.
-                    </p>
-                    <p class="font-bold text-[#3D342D]">
-                        Now, I help small business owners adopt corporate-level efficiency on a realistic budget. I build the systems, you build the dream.
-                    </p>
+                    <p>Since 2011, I’ve worked across high-pressure B2B environments, from manufacturing to large-scale distribution. I’ve seen how manual, unstructured operations slow businesses down, and watched how the right systems can change everything.</p>
+                    <p>Today, I help small business owners bring structure, clarity, and efficiency into their operations using practical, modern tools. Corporate-level systems, designed to be practical and cost-efficient.</p>
+                    <p class="font-bold text-[#3D342D] italic">"You focus on the big picture. I’ll handle the details."</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="bg-[#EDE8DE]/30 py-20 md:py-32 px-6 rounded-[2.5rem] md:rounded-[3rem] mb-24 md:mb-40 max-w-7xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-12 md:gap-20">
-            <div>
-                <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-10 md:mb-12">Expertise</h2>
-                <div class="space-y-10 md:space-y-12">
-                    <div class="group">
-                        <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] opacity-40 group-hover:opacity-100 transition-all mb-2 block tracking-widest">01 / OPS SETUP</span>
-                        <h4 class="text-xl md:text-2xl font-bold mb-3">Workflow Architecture</h4>
-                        <p class="text-[#6B5E54]">Developing custom SOPs, inventory control, and automated administrative workflows for long-term consistency.</p>
-                    </div>
-                    <div class="group">
-                        <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] opacity-40 group-hover:opacity-100 transition-all mb-2 block tracking-widest">02 / SYSTEMS</span>
-                        <h4 class="text-xl md:text-2xl font-bold mb-3">Workspace Ecosystems</h4>
-                        <p class="text-[#6B5E54]">Leveraging Google Workspace and AI to create real-time sales dashboards, automated billing, and secure data vaults.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="bg-white p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] border border-[#B08D3E]/10 shadow-sm flex flex-col justify-center">
-                <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-6 md:mb-8">Ideal Partners</h2>
-                <p class="text-2xl md:text-3xl font-bold mb-6 md:mb-8 leading-[1.2] text-[#3D342D]">I work with owners who are currently "The Admin" of their own business.</p>
-                <ul class="space-y-4 md:space-y-6">
-                    <li class="flex items-start gap-4">
-                        <div class="mt-2 h-1.5 w-1.5 rounded-full bg-gold-deep shrink-0"></div>
-                        <p class="text-[#6B5E54] font-medium leading-relaxed text-sm md:text-base">Growing teams (1-10 people) needing immediate structure.</p>
-                    </li>
-                    <li class="flex items-start gap-4">
-                        <div class="mt-2 h-1.5 w-1.5 rounded-full bg-gold-deep shrink-0"></div>
-                        <p class="text-[#6B5E54] font-medium leading-relaxed text-sm md:text-base">Owners looking for automation without high monthly fees.</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
+    <!-- Showcases Gallery (STRICT ZIG-ZAG) -->
     <main id="projects" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
         <div class="flex items-center justify-between mb-16 md:mb-24">
             <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E]">Showcases</h2>
@@ -269,35 +230,110 @@
         </div>
         
         <div class="grid gap-24 md:gap-48">
+            <!-- Case 1: Landscape (L) -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-7">
                     <div class="video-landscape glow-card">
                         <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] md:text-xs p-8 text-center uppercase tracking-widest font-bold">
-                            [Demo: Travel Agency Hub]
+                            [Landscape Demo: Ticketing System]
                         </div>
                     </div>
                 </div>
                 <div class="md:col-span-5 text-center md:text-left">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 01 • Operations</span>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-[#3D342D]">Travel & EO Ops Center</h3>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-[#3D342D]">Centralized Ticketing Hub</h3>
                     <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg">
-                        Consolidated a manual travel agency process into a centralized ticketing ecosystem. Automated inquiry logs and real-time transaction tracking.
+                        Consolidated manual ticketing processes into a centralized ecosystem. Real-time transaction tracking and team task assignment.
                     </p>
                 </div>
             </section>
 
+            <!-- Case 2: Portrait (R) -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-6 md:col-start-2 order-2 md:order-1 text-center md:text-right">
-                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 02 • Insights</span>
+                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 02 • Data Insight</span>
                     <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-serif italic text-gold-deep">Community Dashboard</h3>
                     <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg md:ml-auto max-w-sm">
-                        A mobile-first Looker Studio dashboard for a Simracing Broadcast community. Track engagement while on the go.
+                        A mobile-first Looker Studio dashboard for a Simracing community. Visualizing engagement and broadcast performance.
                     </p>
                 </div>
                 <div class="md:col-span-4 order-1 md:order-2">
                     <div class="video-portrait glow-card mx-auto max-w-xs md:max-w-none">
-                        <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] p-6 text-center leading-tight uppercase font-bold">
-                            [Demo: Dashboard]
+                        <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] p-6 text-center uppercase font-bold">
+                            [Portrait Demo: Dashboard]
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Case 3: Landscape (L) -->
+            <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+                <div class="md:col-span-7">
+                    <div class="video-landscape glow-card">
+                        <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] md:text-xs p-8 text-center uppercase tracking-widest font-bold">
+                            [Landscape Demo: GSheet Invoice]
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-5 text-center md:text-left">
+                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 03 • Finance Admin</span>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-[#3D342D]">Global Billing Templates</h3>
+                    <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg">
+                        Custom GSheet invoicing for international clients. Features automated currency conversion and professional branding.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Case 4: Portrait (R) -->
+            <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+                <div class="md:col-span-6 md:col-start-2 order-2 md:order-1 text-center md:text-right">
+                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 04 • Automation</span>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-serif italic text-gold-deep">Automated GForm Billing</h3>
+                    <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg md:ml-auto max-w-sm">
+                        Zero-touch invoicing flow. Google Form submissions automatically generate and file professional PDF invoices.
+                    </p>
+                </div>
+                <div class="md:col-span-4 order-1 md:order-2">
+                    <div class="video-portrait glow-card mx-auto max-w-xs md:max-w-none">
+                        <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] p-6 text-center uppercase font-bold">
+                            [Portrait Demo: GForm Flow]
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Case 5: Landscape (L) -->
+            <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+                <div class="md:col-span-7">
+                    <div class="video-landscape glow-card">
+                        <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] md:text-xs p-8 text-center uppercase tracking-widest font-bold">
+                            [Landscape Demo: Website]
+                        </div>
+                    </div>
+                </div>
+                <div class="md:col-span-5 text-center md:text-left">
+                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 05 • Web Dev</span>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-[#3D342D]">Functional Web Presence</h3>
+                    <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg">
+                        WordPress-based company profiles integrated with backend inquiry systems. Professional front-end for modern operations.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Case 6: Case Study Communication (R) -->
+            <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+                <div class="md:col-span-5 order-2 md:order-1 text-center md:text-right">
+                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 06 • Client Management</span>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 font-serif italic text-gold-deep">High-Stakes VIP Support</h3>
+                    <p class="text-[#6B5E54] leading-relaxed text-base md:text-lg md:ml-auto max-w-sm">
+                        Managing complex B2B relationships. Showcasing professional English communication for luxury sales and executive VIP support.
+                    </p>
+                </div>
+                <div class="md:col-span-7 order-1 md:order-2">
+                    <div class="video-landscape glow-card overflow-hidden bg-white flex items-center justify-center">
+                        <div class="text-center p-12">
+                            <svg class="w-16 h-16 text-[#B08D3E]/20 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-[#B08D3E]/40">[Case Study: VIP Communication PDF]</span>
                         </div>
                     </div>
                 </div>
@@ -305,6 +341,7 @@
         </div>
     </main>
 
+    <!-- AI Consultant Section -->
     <section id="ai-consultant" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
         <div class="bg-white rounded-[2rem] md:rounded-[3rem] p-6 md:p-16 border border-[#B08D3E]/20 shadow-xl overflow-hidden relative">
             <div class="absolute top-0 right-0 w-64 h-64 bg-[#B08D3E]/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
@@ -336,6 +373,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer id="contact" class="bg-[#3D342D] py-24 md:py-40 px-6 rounded-t-[3rem] md:rounded-t-[4rem] text-center">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-10 tracking-tighter text-white leading-tight">Ready to <span class="font-serif italic text-gold-deep">scale</span> <br class="hidden sm:block"/>without the stress?</h2>
@@ -343,10 +381,11 @@
                 <a href="mailto:hello@annisa.com" class="w-full sm:w-auto bg-[#B08D3E] text-white px-10 md:px-12 py-4 md:py-5 rounded-2xl font-bold text-xs md:text-sm tracking-widest uppercase hover:shadow-[0_0_40px_rgba(176,141,62,0.3)] transition-all">Email Me</a>
                 <a href="#" class="w-full sm:w-auto border border-[#B08D3E]/40 px-10 md:px-12 py-4 md:py-5 rounded-2xl font-bold text-xs md:text-sm tracking-widest uppercase text-[#B08D3E] hover:bg-white/5 transition-all">WhatsApp</a>
             </div>
-            <p class="mt-16 md:mt-20 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.5em] opacity-30 text-[#FAF3E0]">© 2025 Annisa • Your Modern Admin</p>
+            <p class="mt-16 md:mt-20 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.5em] opacity-30 text-[#FAF3E0]">© 2025 Annisa Islamiasih • Your Modern Admin</p>
         </div>
     </footer>
 
+    <!-- AI Logic Script -->
     <script>
         const apiKey = ""; 
 
@@ -364,9 +403,7 @@
             responseText.classList.add('hidden');
             submitBtn.disabled = true;
 
-            const systemPrompt = `You are Annisa's Modern Admin Assistant. Annisa is an expert with 15+ years in B2B ops. 
-            Her tools: Google Workspace, AI, Looker Studio. Provide a professional, friendly 3-step automation solution in English. 
-            Keep it brief and encourage them to contact Annisa for implementation.`;
+            const systemPrompt = `You are Annisa's Modern Admin Assistant. Annisa (Islamiasih) is an expert with 15+ years in B2B ops. Her tools: Google Workspace, AI, Looker Studio. Provide a professional, friendly 3-step automation solution in English. Keep it brief and encourage them to contact Annisa for implementation.`;
 
             let retries = 0;
             const maxRetries = 5;
