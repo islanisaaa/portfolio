@@ -26,16 +26,14 @@
         .text-gold-deep { color: #B08D3E !important; }
 
         .glow-button {
-            background-color: transparent;
-            color: var(--gold-deep);
-            border: 1.5px solid var(--gold-deep);
+            background-color: var(--gold-deep);
+            color: white;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .glow-button:hover {
-            background-color: var(--gold-deep);
-            color: white;
-            box-shadow: 0 0 20px rgba(176, 141, 62, 0.4);
+            background-color: #967833;
+            box-shadow: 0 0 25px rgba(176, 141, 62, 0.4);
         }
 
         .glow-card {
@@ -45,52 +43,41 @@
         .glow-card:hover {
             border-color: var(--gold-deep);
             box-shadow: 0 0 30px rgba(176, 141, 62, 0.15);
-            background-color: white;
         }
-
-        html { scroll-behavior: smooth; }
-
-        /* --- ANIMASI PENDARAN FOTO --- */
-        @keyframes rotate-glow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        
+        @keyframes rotate-glow { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
         }
-
-        .glow-wrapper {
-            position: relative;
+        .glow-wrapper { 
+            position: relative; 
             padding: 8px; 
-            border-radius: 9999px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
+            border-radius: 9999px; 
+            overflow: hidden; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .glow-wrapper::before { 
+            content: ''; 
+            position: absolute; 
+            width: 150%; 
+            height: 150%; 
+            background: conic-gradient(from 0deg, transparent, transparent 60%, var(--gold-deep), var(--gold-accent), transparent); 
+            animation: rotate-glow 3s linear infinite; 
+            opacity: 0; 
+            transition: opacity 0.5s ease; 
+        }
+        .glow-wrapper:hover::before { opacity: 1; }
+        .photo-inner { 
+            position: relative; 
+            z-index: 10; 
+            background-color: var(--bg-sand); 
+            border-radius: 9999px; 
+            overflow: hidden; 
         }
 
-        .glow-wrapper::before {
-            content: '';
-            position: absolute;
-            width: 150%;
-            height: 150%;
-            background: conic-gradient(from 0deg, transparent, transparent 60%, var(--gold-deep), var(--gold-accent), transparent);
-            animation: rotate-glow 3s linear infinite;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .glow-wrapper:hover::before {
-            opacity: 1;
-        }
-
-        .photo-inner {
-            position: relative;
-            z-index: 10;
-            background-color: var(--bg-sand);
-            border-radius: 9999px;
-            overflow: hidden;
-        }
-
-        /* --- FRAME VIDEO --- */
+        /* --- VIDEO FRAME --- */
         .video-container { 
             position: relative; 
             width: 100%; 
@@ -100,7 +87,7 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
         
-        .video-landscape { padding-bottom: 56.25%; } /* 16:9 */
+        .video-landscape { padding-bottom: 56.25%; } 
         
         .video-portrait { 
             aspect-ratio: 9 / 16;
@@ -112,24 +99,17 @@
             position: absolute; 
             top: 50%; left: 50%; 
             width: 100%; height: 100%; 
-            transform: translate(-50%, -50%) scale(1.01);
+            transform: translate(-50%, -50%) scale(1.02);
             border: none;
         }
 
         /* Marquee Scrolling */
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .marquee {
-            display: flex;
-            width: fit-content;
-            animation: scroll 40s linear infinite;
-        }
-        .marquee-container {
-            overflow: hidden;
-            width: 100%;
-            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee { display: flex; width: fit-content; animation: scroll 40s linear infinite; }
+        .marquee-container { 
+            overflow: hidden; 
+            width: 100%; 
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); 
         }
         .tool-item {
             display: flex;
@@ -152,39 +132,37 @@
         }
         .tool-name { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #6B5E54; white-space: nowrap; }
 
-        .headline-accent {
-            position: relative;
-            display: inline-block;
+        .headline-accent { position: relative; display: inline-block; }
+        .headline-accent::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0.1em; 
+            left: 0; 
+            width: 100%; 
+            height: 0.15em; 
+            background-color: rgba(176, 141, 62, 0.15); 
+            z-index: -1; 
         }
-        .headline-accent::after {
-            content: '';
-            position: absolute;
-            bottom: 0.1em;
-            left: 0;
-            width: 100%;
-            height: 0.15em;
-            background-color: rgba(176, 141, 62, 0.15);
-            z-index: -1;
-        }
+        html { scroll-behavior: smooth; }
+
+        /* Custom Scrollbar */
+        #ai-response-text::-webkit-scrollbar { width: 4px; }
+        #ai-response-text::-webkit-scrollbar-thumb { background: var(--gold-deep); border-radius: 10px; }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Navigasi -->
-    <nav class="max-w-7xl mx-auto px-6 py-8 md:py-10 flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
-        <div class="font-bold text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-[#B08D3E]">
-            YOUR MODERN ADMIN<span class="opacity-30">.</span>
-        </div>
-        <div class="flex items-center gap-4 md:gap-6 text-[9px] md:text-[10px] font-bold uppercase tracking-widest opacity-60 text-[#3D342D]">
+    <nav class="max-w-7xl mx-auto px-6 py-8 md:py-10 flex justify-between items-center">
+        <div class="font-bold text-[10px] uppercase tracking-[0.4em] text-[#B08D3E]">YOUR MODERN ADMIN.</div>
+        <div class="flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest opacity-60">
             <a href="#about" class="hover:text-gold-deep transition-all">Profile</a>
             <a href="#projects" class="hover:text-gold-deep transition-all text-gold-deep">Work</a>
-            <a href="#contact" class="glow-button px-5 md:px-7 py-2 md:py-2.5 rounded-full transition-all shadow-sm">
-                Work with me
-            </a>
+            <a href="#contact" class="glow-button px-6 py-2 rounded-full shadow-sm text-white bg-[#B08D3E]">Work with me</a>
         </div>
     </nav>
 
-    <!-- Bagian Hero -->
+    <!-- Hero Section -->
     <header class="max-w-7xl mx-auto px-6 pt-10 md:pt-16 pb-20 md:pb-28 relative overflow-hidden">
         <div class="absolute top-0 left-0 w-64 h-64 bg-[#B08D3E] opacity-[0.03] rounded-full -ml-32 -mt-32 blur-3xl"></div>
         <div class="max-w-5xl relative z-10">
@@ -195,7 +173,6 @@
                 </span>
                 Available for worldwide projects
             </div>
-            <!-- TEXT HERO: Dibatasi maksimal 2 baris pada layar besar -->
             <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-bold leading-[1.15] mb-8 md:mb-10 text-[#3D342D] tracking-tighter max-w-4xl">
                 Transforming manual admin into <br class="hidden lg:block"/>
                 <span class="font-serif italic text-gold-deep headline-accent">integrated, automated</span> systems.
@@ -206,7 +183,7 @@
         </div>
     </header>
 
-    <!-- Marquee Alat (Icon + Text) -->
+    <!-- Marquee Tools -->
     <section class="mb-20 md:mb-32 px-6">
         <div class="max-w-7xl mx-auto">
             <p class="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] text-[#B08D3E] mb-8 md:mb-10 opacity-60 text-center md:text-left italic">
@@ -214,110 +191,96 @@
             </p>
             <div class="marquee-container border-y border-[#3D342D]/10 py-10 md:py-14">
                 <div class="marquee space-x-6 md:space-x-10 items-center flex">
-                    <!-- Tool 1 -->
                     <div class="tool-item">
                         <svg class="w-5 h-5" fill="#0F9D58" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
                         <span class="tool-name">Google Spreadsheet</span>
                     </div>
-                    <!-- Tool 2 -->
                     <div class="tool-item">
                         <svg class="w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                         <span class="tool-name">Looker Studio</span>
                     </div>
-                    <!-- Tool 3 -->
                     <div class="tool-item">
                         <svg class="w-5 h-5" fill="#10a37f" viewBox="0 0 24 24"><path d="M22.28 12.17c-.12.44-.32.86-.59 1.23-.33.45-.76.83-1.25 1.11-.49.28-1.04.42-1.6.42-.56 0-1.11-.14-1.6-.42-.49-.28-.92-.66-1.25-1.11-.27-.37-.47-.79-.59-1.23h-1.4c.12 1.02.58 1.96 1.3 2.68.72.72 1.66 1.18 2.68 1.3V19c0 .55.45 1 1 1s1-.45 1-1v-2.65c1.02-.12 1.96-.58 2.68-1.3.72-.72 1.18-1.66 1.3-2.68h-1.4zM12 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/></svg>
                         <span class="tool-name">ChatGPT / Gemini</span>
                     </div>
-                    <!-- Tool 4 -->
                     <div class="tool-item">
                         <svg class="w-5 h-5" fill="#00C4CC" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
                         <span class="tool-name">Canva</span>
                     </div>
-                    <!-- Tool 5 -->
                     <div class="tool-item">
                         <svg class="w-5 h-5" fill="#21759B" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>
                         <span class="tool-name">WordPress</span>
                     </div>
-                    <!-- Duplicate for loop -->
+                    <!-- Duplicate for infinite loop -->
                     <div class="tool-item"><svg class="w-5 h-5" fill="#0F9D58" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span class="tool-name">Google Spreadsheet</span></div>
-                    <div class="tool-item"><svg class="w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span class="tool-name">Looker Studio</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Profil Profesional -->
+    <!-- About Section -->
     <section id="about" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
         <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
             <div class="md:col-span-4 flex justify-center">
                 <div class="glow-wrapper group w-52 h-52 md:w-60 md:h-60 lg:w-68 lg:h-68">
-                    <div class="photo-inner w-full h-full rounded-full overflow-hidden border border-[#B08D3E]/20 bg-[#EDE8DE] shadow-sm">
-                        <img src="dispict.jpeg" 
-                             alt="Annisa Islamiasih" 
-                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                             onerror="this.onerror=null; this.src='https://islanisaaa.github.io/portfolio/dispict.jpeg';">
+                    <div class="photo-inner w-full h-full">
+                        <img src="dispict.jpeg" alt="Annisa Islamiasih" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.onerror=null; this.src='https://islanisaaa.github.io/portfolio/dispict.jpeg';">
                     </div>
                 </div>
             </div>
-            <div class="md:col-span-8 text-center md:text-left mt-10 md:mt-0">
-                <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-6 md:mb-8">Professional Profile</h2>
-                <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 text-[#3D342D] leading-[1.1] pt-2">
-                    Annisa Islamiasih <br/>
-                    <span class="font-serif italic text-gold-deep">Modern Admin Strategist</span>
-                </h3>
+            <div class="md:col-span-8 text-center md:text-left">
+                <h2 class="text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-6 tracking-[0.5em]">Professional Profile</h2>
+                <h3 class="text-3xl md:text-5xl font-bold mb-8 text-[#3D342D]">Annisa Islamiasih. <br/><span class="font-serif italic text-gold-deep">Modern Admin Strategist.</span></h3>
                 <div class="space-y-4 md:space-y-6 text-base md:text-lg text-[#6B5E54] leading-relaxed max-w-2xl mx-auto md:mx-0">
                     <p>Since 2011, I’ve worked across high-pressure B2B environments, from manufacturing to large-scale distribution. I’ve seen how manual, unstructured operations slow businesses down, and watched how the right systems can change everything.</p>
-                    <p>Today, I help small business owners bring structure, clarity, and efficiency into their operations using practical, modern tools. Corporate-level systems, designed to be practical and cost-efficient.</p>
-                    <p class="font-bold text-[#3D342D] italic">You focus on the big picture. I’ll handle the details.</p>
+                    <p>Today, I help small business owners bring structure, clarity, and efficiency into their operations using practical, modern tools.</p>
+                    <p class="font-bold text-[#3D342D] italic">"You focus on the big picture. I’ll handle the details. "</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Galeri Showcase (Zig-Zag) -->
-    <main id="projects" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
-        <div class="flex items-center justify-between mb-16 md:mb-24">
-            <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E]">Showcases</h2>
-            <div class="h-[1px] bg-[#3D342D]/10 flex-grow ml-8 md:ml-12"></div>
+    <!-- Showcases Section -->
+    <main id="projects" class="max-w-7xl mx-auto px-6 pb-40">
+        <div class="flex items-center justify-between mb-8">
+            <h2 class="text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] tracking-[0.5em]">Showcases</h2>
+            <div class="h-[1px] bg-[#3D342D]/10 flex-grow ml-12"></div>
+        </div>
+        
+        <!-- DATA DUMMY WARNING (As requested) -->
+        <div class="mb-16 md:mb-24">
+            <div class="inline-flex items-center gap-3 px-5 py-2.5 bg-[#B08D3E]/5 border border-[#B08D3E]/20 rounded-xl">
+                <svg class="w-4 h-4 text-[#B08D3E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <p class="text-[10px] md:text-xs font-medium text-[#6B5E54]">
+                    Semua data yang digunakan pada <span class="text-[#3D342D] font-bold uppercase tracking-wider">video clip</span> adalah data dummy. Data asli terdapat pada file PDF di bagian bawah.
+                </p>
+            </div>
         </div>
 
-        <div class="grid gap-24 md:gap-48">
-            <!-- Case 01: Automated Ticketing (Video L) -->
+        <div class="grid gap-32">
+            <!-- Case 01: Landscape -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-16 items-start">
                 <div class="md:col-span-7">
                     <div class="video-container video-landscape glow-card">
-                        <iframe src="https://www.youtube.com/embed/Q4ILJoFZbIU" title="Automated Ticketing System Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/Q4ILJoFZbIU" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="md:col-span-5">
-                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 01 • Operations & Automation</span>
-                    <h3 class="text-3xl font-bold mb-2 text-[#3D342D]">Automated Ticketing & Transaction System</h3>
+                    <span class="text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 01 • Operations & Automation</span>
+                    <h3 class="text-3xl font-bold mb-4 text-[#3D342D]">Automated Ticketing & Transaction System</h3>
                     <p class="text-xs font-bold text-[#B08D3E] uppercase tracking-widest mb-6 italic opacity-80">Travel Agency Workflow built with Google Workspace</p>
-                    <div class="space-y-6 text-[#6B5E54] text-sm md:text-base leading-relaxed">
-                        <p>A travel agency previously running on manual paperwork, with separate files, inconsistent formats, and no real-time visibility. I rebuilt the entire back-office workflow into one connected system using Google Sheets, Autocrat, and Looker Studio.</p>
-                        <p class="font-bold text-[#3D342D]">One input. Instant PDF output. Live dashboard. No double entry, no formatting errors, no digging through folders.</p>
-                        <div class="pt-4">
-                            <a href="https://drive.google.com/drive/folders/1Eex9lr9JtoTtR9eS_Q2rk1X32CD_8jlp?usp=sharing" target="_blank" class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#B08D3E] hover:text-[#3D342D] transition-colors">
-                                <span>📄 View sample output</span>
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                            </a>
-                        </div>
-                    </div>
+                    <p class="text-[#6B5E54] mb-6 leading-relaxed text-sm md:text-base">A connected system using Google Sheets, Autocrat, and Looker Studio. One input. Instant PDF output. Live dashboard. No double entry, no formatting errors.</p>
+                    <a href="https://drive.google.com/drive/folders/1Eex9lr9JtoTtR9eS_Q2rk1X32CD_8jlp?usp=sharing" target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-[#B08D3E] hover:underline">📄 View sample output →</a>
                 </div>
             </section>
 
-            <!-- Case 02: Community Member Dashboard (Video R) -->
+            <!-- Case 02: Portrait -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-16 items-center">
                 <div class="md:col-span-5 text-right order-2 md:order-1">
                     <span class="text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block text-gold-deep">Case 02 • Data Processing</span>
-                    <h3 class="text-3xl font-bold mb-4 text-[#3D342D]">Community Member Dashboard System</h3>
+                    <h3 class="text-3xl font-bold mb-4 text-[#3D342D]">Community Member Dashboard</h3>
                     <p class="text-[#B08D3E] text-[10px] font-bold uppercase mb-6 tracking-widest">Real-time data tracking with Google Workspace</p>
-                    <div class="text-[#6B5E54] mb-8 leading-relaxed text-sm md:text-base">
-                        <p>A networking community needed more than just a list. I built a structured data collection system using Google Forms, then transformed the responses into a real-time dashboard with Looker Studio.</p>
-                        <br/>
-                        <strong class="text-[#3D342D]">Clean data. Real-time insights. Better decisions.</strong>
-                    </div>
+                    <p class="text-[#6B5E54] mb-8 leading-relaxed text-sm md:text-base">Structured data collection using Google Forms, transforming responses into a real-time dashboard with Looker Studio. <strong>Clean data. Real-time insights. Better decisions.</strong></p>
                     <p class="text-xs font-bold italic text-[#3D342D]">Need better visibility into your data? <a href="#contact" class="text-[#B08D3E] underline">Let’s build yours.</a></p>
                 </div>
                 <div class="md:col-span-4 md:col-start-8 order-1 md:order-2">
@@ -327,54 +290,60 @@
                 </div>
             </section>
 
-            <!-- Case 03: Simple Invoice System (Video L) -->
+            <!-- Case 03: Landscape -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-16 items-start">
                 <div class="md:col-span-7">
                     <div class="video-container video-landscape glow-card">
-                        <iframe src="https://www.youtube.com/embed/WLDnnVEjlww" title="Simple Invoice System Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/WLDnnVEjlww" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="md:col-span-5">
-                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 03 • Finance Admin</span>
-                    <h3 class="text-3xl font-bold mb-2 text-[#3D342D]">Simple Invoice System with Google Sheets</h3>
-                    <p class="text-xs font-bold text-[#B08D3E] uppercase tracking-widest mb-6 italic opacity-80">Structured billing workflow for small businesses</p>
+                    <span class="text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 03 • Finance Admin</span>
+                    <h3 class="text-3xl font-bold mb-4 text-[#3D342D]">Simple Invoice System with Google Sheets</h3>
+                    <p class="text-[#B08D3E] text-[10px] font-bold uppercase mb-6 tracking-widest">Structured billing workflow for small businesses</p>
                     <div class="space-y-6 text-[#6B5E54] text-sm md:text-base leading-relaxed">
-                        <p>A small business in Germany was issuing invoices manually in MS Word, resulting in inconsistent formats and every invoice built from scratch.</p>
-                        <p>I rebuilt their entire billing workflow in Google Sheets. One input, one dropdown selection, and a fully formatted invoice populates automatically—fully adapted to German invoicing standards.</p>
-                        <p class="font-bold text-[#3D342D]">No expensive software. No formatting headaches. Just a clean, standardized output every time.</p>
-                        <div class="pt-6 border-t border-[#B08D3E]/10">
-                            <p class="text-xs font-bold italic text-[#3D342D]">Still building invoices manually? <a href="#contact" class="text-[#B08D3E] underline underline-offset-4">Let’s fix that.</a></p>
-                        </div>
+                        <p>I rebuilt a manual MS Word workflow into a structured billing system in Google Sheets. One input, one dropdown selection, and a fully formatted invoice populates automatically.</p>
+                        <p class="font-bold text-[#3D342D]">No expensive software. No formatting headaches. Just a clean, standardized output setiap saat.</p>
+                        <p class="text-xs font-bold italic text-[#3D342D]">Still building invoices manually? <a href="#contact" class="text-[#B08D3E] underline underline-offset-4">Let’s fix that.</a></p>
                     </div>
                 </div>
             </section>
 
-            <!-- Case 04, 05, 06 (Zig-Zag Placeholders as requested) -->
-            <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center opacity-60">
+            <!-- Case 04: Portrait -->
+            <section class="grid md:grid-cols-12 gap-8 md:gap-16 items-center">
                 <div class="md:col-span-5 text-right order-2 md:order-1">
-                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 04 • Automation</span>
-                    <h3 class="text-3xl font-bold mb-4 font-serif italic text-gold-deep">Form-to-Invoice Flow</h3>
-                    <p class="text-[#6B5E54] max-w-sm ml-auto text-sm md:text-base leading-relaxed">From Google Form submission to fully generated PDF invoice automatically.</p>
+                    <span class="text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 04 • Zero Manual Processing</span>
+                    <h3 class="text-3xl font-bold mb-4 text-[#3D342D]">Automated Invoice Generation with Google Forms</h3>
+                    <p class="text-[#B08D3E] text-[10px] font-bold uppercase mb-6 tracking-widest">Form-to-PDF workflow with zero manual processing</p>
+                    <div class="text-[#6B5E54] mb-8 leading-relaxed text-sm md:text-base">
+                        <p>Generate invoices automatically from a single form submission. Instantly turned into a structured PDF invoice based on a pre-formatted template.</p>
+                        <br/>
+                        <strong class="text-[#3D342D]">One submission. Instant invoice. Fully recorded.</strong>
+                    </div>
+                    <p class="text-xs font-bold italic text-[#3D342D]">Still creating invoices manually? <a href="#contact" class="text-[#B08D3E] underline">Let’s automate it.</a></p>
                 </div>
                 <div class="md:col-span-4 md:col-start-8 order-1 md:order-2">
-                    <div class="video-portrait glow-card mx-auto max-w-xs md:max-w-none bg-[#EDE8DE]"></div>
+                    <div class="video-container video-portrait glow-card shadow-2xl border-4 border-white/5">
+                        <iframe src="https://www.youtube.com/embed/_CmSw-HfU18?rel=0&modestbranding=1&autoplay=0" allowfullscreen></iframe>
+                    </div>
                 </div>
             </section>
 
-            <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center opacity-60">
+            <!-- Case 05 & 06 Placeholders -->
+            <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center opacity-40">
                 <div class="md:col-span-7"><div class="video-landscape glow-card bg-[#EDE8DE]"></div></div>
                 <div class="md:col-span-5">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 05 • Web Dev</span>
                     <h3 class="text-3xl font-bold mb-4">Functional Web Presence</h3>
-                    <p class="text-[#6B5E54] text-sm md:text-base leading-relaxed">WordPress extensions integrated with backend inquiry systems.</p>
+                    <p class="text-[#6B5E54]">WordPress extensions integrated with backend inquiry systems.</p>
                 </div>
             </section>
-
-            <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center opacity-60">
+            
+            <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center opacity-40">
                 <div class="md:col-span-5 text-right order-2 md:order-1">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block text-gold-deep">Case 06 • VIP Support</span>
-                    <h3 class="text-3xl font-bold mb-4">High-Stakes VIP Support</h3>
-                    <p class="text-[#6B5E54] max-w-sm ml-auto text-sm md:text-base leading-relaxed">Elite B2B relationship management and luxury sales communication.</p>
+                    <h3 class="text-3xl font-bold mb-4 text-[#3D342D]">High-Stakes VIP Support</h3>
+                    <p class="text-[#6B5E54] max-w-sm ml-auto text-sm md:text-base">Elite B2B relationship management and luxury sales communication.</p>
                 </div>
                 <div class="md:col-span-7 order-1 md:order-2">
                     <div class="video-landscape glow-card bg-[#EDE8DE]"></div>
@@ -383,45 +352,83 @@
         </div>
     </main>
 
-    <!-- Bagian Konsultan AI -->
-    <section id="ai-consultant" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
-        <div class="bg-white rounded-[2rem] md:rounded-[3rem] p-6 md:p-16 border border-[#B08D3E]/20 shadow-xl overflow-hidden relative">
+    <!-- AI Consultant Section (Visual matched to image_084083.png) -->
+    <section id="ai-consultant" class="max-w-7xl mx-auto px-6 pb-40">
+        <div class="bg-white rounded-[3rem] p-8 md:p-16 border border-[#B08D3E]/20 shadow-xl relative overflow-hidden">
             <div class="absolute top-0 right-0 w-64 h-64 bg-[#B08D3E]/5 rounded-full -mr-32 -mt-32 blur-3xl"></div>
-            <div class="relative z-10 grid md:grid-cols-2 gap-10 md:gap-12 items-center">
-                <div>
-                    <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-6 text-gold-deep">Interactive Demo</h2>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-[#3D342D]">Try My AI Consultant ✨</h3>
-                    <p class="text-base md:text-lg text-[#6B5E54] mb-8">Describe one messy administrative task. My AI assistant will suggest a modern solution.</p>
-                    <div class="space-y-4">
-                        <textarea id="ai-input" class="w-full bg-[#F9F7F2] border border-[#B08D3E]/20 rounded-2xl p-5 md:p-6 text-[#3D342D] focus:outline-none focus:border-[#B08D3E]" rows="3" placeholder="I struggle with tracking receipts..."></textarea>
-                        <button id="ai-submit" onclick="generateAutomationSolution()" class="bg-[#B08D3E] text-white px-8 py-4 rounded-2xl font-bold text-sm tracking-widest uppercase hover:shadow-[0_0_25px_rgba(176,141,62,0.4)] transition-all w-full">Ask for Solution ✨</button>
+            
+            <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start relative z-10">
+                <div class="text-left">
+                    <p class="text-[10px] uppercase tracking-widest text-[#B08D3E] font-bold mb-4 tracking-[0.2em]">Interactive Demo</p>
+                    <h3 class="text-4xl font-bold mb-6 text-[#3D342D]">Try My AI Consultant ✨</h3>
+                    <p class="text-lg text-[#6B5E54] mb-10 leading-relaxed">Describe one messy administrative task. My AI assistant will suggest a modern solution.</p>
+                    
+                    <div class="space-y-6">
+                        <textarea id="ai-input" class="w-full bg-[#F9F7F2] border border-[#B08D3E]/20 rounded-2xl p-6 text-[#3D342D] focus:outline-none focus:border-[#B08D3E] resize-none" rows="4" placeholder="I struggle with tracking receipts..."></textarea>
+                        
+                        <button id="ai-submit" onclick="generateAutomationSolution()" class="glow-button w-full md:w-auto px-10 py-5 rounded-2xl font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-2">
+                            <span>Ask for Solution</span> ✨
+                        </button>
                     </div>
                 </div>
-                <div class="bg-[#F9F7F2] rounded-3xl p-6 md:p-8 min-h-[250px] border border-dashed border-[#B08D3E]/30">
-                    <div id="ai-output" class="text-[#6B5E54] text-sm leading-relaxed">
-                        <p id="ai-placeholder" class="italic opacity-50">Solution will appear here...</p>
-                        <div id="ai-loading" class="hidden"><div class="animate-spin h-4 w-4 border-2 border-[#B08D3E] border-t-transparent rounded-full inline-block mr-2"></div>Analyzing...</div>
-                        <div id="ai-response-text" class="hidden whitespace-pre-wrap"></div>
+
+                <div class="h-full">
+                    <div class="bg-[#F9F7F2] rounded-[2rem] p-8 border border-dashed border-[#B08D3E]/40 h-full flex flex-col justify-center min-h-[300px]">
+                        <div id="ai-output" class="text-[#6B5E54] text-base leading-relaxed">
+                            <p id="ai-placeholder" class="italic opacity-50 text-center">Solution will appear here...</p>
+                            
+                            <!-- Loading state -->
+                            <div id="ai-loading" class="hidden flex flex-col items-center gap-4">
+                                <div class="animate-spin h-8 w-8 border-4 border-[#B08D3E] border-t-transparent rounded-full"></div>
+                                <span class="font-bold text-[#B08D3E] text-xs uppercase tracking-widest">Architecting solution...</span>
+                            </div>
+
+                            <!-- Real Output -->
+                            <div id="ai-response-text" class="hidden text-left max-h-[400px] overflow-y-auto pr-4"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact" class="bg-[#3D342D] py-24 md:py-40 px-6 rounded-t-[3rem] text-center text-[#FAF3E0]">
+    <!-- Footer Section (Visual matched to image_08434a.png) -->
+    <footer id="contact" class="bg-[#3D342D] py-32 md:py-48 px-6 text-center text-[#FAF3E0] rounded-t-[4rem] relative">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-10 text-white leading-tight leading-tight">Ready to <span class="font-serif italic text-gold-deep headline-accent">scale</span>?</h2>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <a href="mailto:hello@annisa.com" class="bg-[#B08D3E] text-white px-12 py-5 rounded-2xl font-bold uppercase tracking-widest shadow-xl hover:shadow-[0_0_40px_rgba(176,141,62,0.3)] transition-all">Email Me</a>
-                <a href="#" class="border border-[#B08D3E]/40 px-12 py-5 rounded-2xl font-bold uppercase text-[#B08D3E] hover:bg-white/5 transition-all">WhatsApp</a>
+            <h2 class="text-5xl md:text-8xl font-bold mb-16 text-white leading-tight">Ready to <span class="font-serif italic text-gold-deep">scale</span>?</h2>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-24">
+                <a href="mailto:hello@annisa.com" class="bg-[#B08D3E] text-white px-14 py-6 rounded-2xl font-bold uppercase tracking-[0.2em] shadow-2xl hover:bg-[#967833] transition-all text-sm w-full sm:w-auto">
+                    Email Me
+                </a>
+                <a href="#" class="border border-[#B08D3E]/40 px-14 py-6 rounded-2xl font-bold uppercase tracking-[0.2em] text-[#B08D3E] hover:bg-white/5 transition-all text-sm w-full sm:w-auto">
+                    WhatsApp
+                </a>
             </div>
-            <p class="mt-20 text-[9px] font-bold uppercase tracking-[0.5em] opacity-30 text-[#FAF3E0]">© 2025 Annisa Islamiasih • Your Modern Admin</p>
+            
+            <div class="pt-20 border-t border-white/5">
+                <p class="text-[10px] font-bold uppercase tracking-[0.4em] opacity-30 text-white">© 2025 Annisa Islamiasih • Your Modern Admin</p>
+            </div>
         </div>
     </footer>
 
     <script>
         const apiKey = ""; 
+
+        // Exponential backoff for API calls
+        async function fetchWithRetry(url, options, retries = 5, backoff = 1000) {
+            try {
+                const response = await fetch(url, options);
+                if (!response.ok) throw new Error('API request failed');
+                return await response.json();
+            } catch (err) {
+                if (retries > 0) {
+                    await new Promise(resolve => setTimeout(resolve, backoff));
+                    return fetchWithRetry(url, options, retries - 1, backoff * 2);
+                }
+                throw err;
+            }
+        }
 
         async function generateAutomationSolution() {
             const input = document.getElementById('ai-input').value;
@@ -432,24 +439,39 @@
             
             if(!input.trim()) return;
             
+            // UI State
             placeholder.classList.add('hidden');
             loading.classList.remove('hidden');
             resText.classList.add('hidden');
             submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.5";
 
-            const systemPrompt = `You are Annisa's Modern Admin Assistant. Annisa (Islamiasih) is an expert in B2B ops. Provide a brief, friendly 3-step automation solution in English using Google Workspace & AI. Encourage them to contact Annisa.`;
+            const systemPrompt = `You are Annisa's Modern Admin Strategic Assistant.
+            Annisa (Islamiasih) is a professional strategist with 15+ years experience in B2B ops.
+            Provide a sophisticated, helpful, and concise 3-step automation solution in English.
+            Focus on tools like Google Workspace, Apps Script, and AI.
+            Tone: Professional, expert, but approachable.
+            Structure:
+            1. Problem Insight (Brief)
+            2. Strategic Solution (Steps)
+            3. Call to Action: Invite them to consult with Annisa for a custom setup.
+            Keep it under 150 words.`;
+
+            const payload = {
+                contents: [{ parts: [{ text: input }] }],
+                systemInstruction: { parts: [{ text: systemPrompt }] }
+            };
 
             try {
-                const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: input }] }],
-                        systemInstruction: { parts: [{ text: systemPrompt }] }
-                    })
-                });
+                const data = await fetchWithRetry(
+                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    }
+                );
 
-                const data = await response.json();
                 const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
 
                 loading.classList.add('hidden');
@@ -457,10 +479,11 @@
                 resText.classList.remove('hidden');
             } catch (error) {
                 loading.classList.add('hidden');
-                resText.innerText = "Connection issue. Please contact Annisa directly!";
+                resText.innerHTML = `<span class="text-red-500">I encountered a connection error. Please contact Annisa directly via email or WhatsApp for a priority consultation.</span>`;
                 resText.classList.remove('hidden');
             } finally {
                 submitBtn.disabled = false;
+                submitBtn.style.opacity = "1";
             }
         }
     </script>
