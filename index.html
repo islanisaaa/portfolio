@@ -118,20 +118,10 @@
             white-space: nowrap;
         }
 
-        /* Aksen Headline (Hanya digunakan jika diinginkan efek garis bawah) */
-        .headline-accent {
+        /* Bersih dari efek bayangan atau garis */
+        .modern-admin-title {
             position: relative;
             display: inline-block;
-        }
-        .headline-accent::after {
-            content: '';
-            position: absolute;
-            bottom: 0.1em;
-            left: 0;
-            width: 100%;
-            height: 0.15em;
-            background-color: rgba(176, 141, 62, 0.15);
-            z-index: -1;
         }
     </style>
 </head>
@@ -210,19 +200,25 @@
     <section id="about" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
         <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
             <div class="md:col-span-4 flex flex-col items-center">
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-tr from-[#B08D3E] to-[#E2B13C] rounded-full blur opacity-10 group-hover:opacity-40 transition duration-1000"></div>
-                    <div class="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border border-[#B08D3E]/20 bg-[#EDE8DE] shadow-sm">
-                        <!-- Menggunakan URL GitHub absolut yang paling stabil -->
-                        <img src="https://raw.githubusercontent.com/islanisaaa/portfolio/main/dispict.png" alt="Annisa Islamiasih" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" onerror="this.src='dispict.png';">
+                <div class="relative z-0">
+                    <!-- Bingkai dekoratif di belakang foto -->
+                    <div class="absolute -inset-2 bg-gradient-to-tr from-[#B08D3E]/20 to-[#E2B13C]/20 rounded-full blur-md md:blur-lg opacity-40"></div>
+                    
+                    <div class="relative w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border border-[#B08D3E]/20 bg-[#EDE8DE] shadow-sm z-10">
+                        <!-- Menggunakan URL GitHub Pages sebagai prioritas utama untuk mencegah loop loading -->
+                        <img src="https://islanisaaa.github.io/portfolio/dispict.png" 
+                             alt="Annisa Islamiasih" 
+                             class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                             onerror="if (this.src != 'dispict.png') this.src = 'dispict.png';">
                     </div>
                 </div>
             </div>
-            <div class="md:col-span-8 text-center md:text-left">
+            <div class="md:col-span-8 text-center md:text-left mt-10 md:mt-0">
                 <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-6 md:mb-8">Professional Profile</h2>
-                <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 text-[#3D342D] leading-[1.1]">
-                    Annisa Islamiasih. <br/>
-                    <span class="font-serif italic text-gold-deep">Modern Admin Strategist.</span>
+                <!-- Nama dengan jarak aman agar tidak tumpang tindih di mobile -->
+                <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 text-[#3D342D] leading-[1.1] pt-2">
+                    Annisa Islamiasih <br/>
+                    <span class="font-serif italic text-gold-deep modern-admin-title">Modern Admin Strategist</span>
                 </h3>
                 <div class="space-y-4 md:space-y-6 text-base md:text-lg text-[#6B5E54] leading-relaxed max-w-2xl mx-auto md:mx-0">
                     <p>Since 2011, I’ve worked across high-pressure B2B environments, from manufacturing to large-scale distribution. I’ve seen how manual, unstructured operations slow businesses down, and watched how the right systems can change everything.</p>
