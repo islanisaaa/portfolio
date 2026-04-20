@@ -23,7 +23,6 @@
         }
         .font-serif { font-family: 'Playfair Display', serif; }
         
-        /* Gold Accent Fix */
         .text-gold-deep { color: #B08D3E !important; }
 
         .glow-button {
@@ -51,7 +50,7 @@
 
         html { scroll-behavior: smooth; }
 
-        /* --- ANIMASI PENDARAN FOTO (REVISI) --- */
+        /* --- ANIMASI PENDARAN FOTO --- */
         @keyframes rotate-glow {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -59,7 +58,7 @@
 
         .glow-wrapper {
             position: relative;
-            padding: 8px; /* Ketebalan pendaran */
+            padding: 8px; 
             border-radius: 9999px;
             overflow: hidden;
             display: flex;
@@ -68,7 +67,6 @@
             background: transparent;
         }
 
-        /* Garis pendaran emas yang berputar */
         .glow-wrapper::before {
             content: '';
             position: absolute;
@@ -91,7 +89,6 @@
             border-radius: 9999px;
             overflow: hidden;
         }
-        /* ------------------------------------- */
 
         /* Video Containers */
         .video-landscape {
@@ -101,6 +98,12 @@
             overflow: hidden;
             border-radius: 1.5rem;
             background: #EDE8DE;
+        }
+
+        .video-landscape iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            border: none;
         }
 
         .video-portrait {
@@ -145,22 +148,8 @@
             background: white;
             border-color: var(--gold-deep);
         }
-        .tool-name {
-            font-size: 9px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #6B5E54;
-            white-space: nowrap;
-        }
+        .tool-name { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #6B5E54; white-space: nowrap; }
 
-        /* Shadowless accent for the About section */
-        .modern-admin-title {
-            position: relative;
-            display: inline-block;
-        }
-
-        /* Headline accent with underline for Hero section only */
         .headline-accent {
             position: relative;
             display: inline-block;
@@ -222,27 +211,12 @@
             </p>
             <div class="marquee-container border-y border-[#3D342D]/10 py-8 md:py-12">
                 <div class="marquee space-x-4 md:space-x-6 items-center flex">
-                    <div class="tool-item">
-                        <svg class="w-4 h-4 md:w-5 h-5" fill="#0F9D58" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                        <span class="tool-name">Google Spreadsheet</span>
-                    </div>
-                    <div class="tool-item">
-                        <svg class="w-4 h-4 md:w-5 h-5" fill="#4285F4" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                        <span class="tool-name">Looker Studio</span>
-                    </div>
-                    <div class="tool-item">
-                        <svg class="w-4 h-4 md:w-5 h-5" fill="#10a37f" viewBox="0 0 24 24"><path d="M22.28 12.17c-.12.44-.32.86-.59 1.23-.33.45-.76.83-1.25 1.11-.49.28-1.04.42-1.6.42-.56 0-1.11-.14-1.6-.42-.49-.28-.92-.66-1.25-1.11-.27-.37-.47-.79-.59-1.23h-1.4c.12 1.02.58 1.96 1.3 2.68.72.72 1.66 1.18 2.68 1.3V19c0 .55.45 1 1 1s1-.45 1-1v-2.65c1.02-.12 1.96-.58 2.68-1.3.72-.72 1.18-1.66 1.3-2.68h-1.4zM12 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/></svg>
-                        <span class="tool-name">ChatGPT / Gemini</span>
-                    </div>
-                    <div class="tool-item">
-                        <svg class="w-4 h-4 md:w-5 h-5" fill="#00C4CC" viewBox="0 0 24 24"><path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                        <span class="tool-name">Canva</span>
-                    </div>
-                    <div class="tool-item">
-                        <svg class="w-4 h-4 md:w-5 h-5" fill="#21759B" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>
-                        <span class="tool-name">WordPress</span>
-                    </div>
-                    <div class="tool-item"><svg class="w-4 h-4 md:w-5 h-5" fill="#0F9D58" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg><span class="tool-name">Google Spreadsheet</span></div>
+                    <div class="tool-item"><span class="tool-name">Google Spreadsheet</span></div>
+                    <div class="tool-item"><span class="tool-name">Looker Studio</span></div>
+                    <div class="tool-item"><span class="tool-name">ChatGPT / Gemini</span></div>
+                    <div class="tool-item"><span class="tool-name">Canva</span></div>
+                    <div class="tool-item"><span class="tool-name">WordPress</span></div>
+                    <div class="tool-item"><span class="tool-name">Google Spreadsheet</span></div>
                 </div>
             </div>
         </div>
@@ -254,7 +228,6 @@
             <div class="md:col-span-4 flex justify-center">
                 <div class="glow-wrapper group w-52 h-52 md:w-60 md:h-60 lg:w-68 lg:h-68">
                     <div class="photo-inner w-full h-full rounded-full overflow-hidden border border-[#B08D3E]/20 bg-[#EDE8DE] shadow-sm">
-                        <!-- FOTO JPEG: Warna Asli & Pendaran Hover -->
                         <img src="dispict.jpeg" 
                              alt="Annisa Islamiasih" 
                              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -266,7 +239,7 @@
                 <h2 class="text-[10px] md:text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-6 md:mb-8">Professional Profile</h2>
                 <h3 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 md:mb-8 text-[#3D342D] leading-[1.1] pt-2">
                     Annisa Islamiasih <br/>
-                    <span class="font-serif italic text-gold-deep modern-admin-title">Modern Admin Strategist</span>
+                    <span class="font-serif italic text-gold-deep">Modern Admin Strategist</span>
                 </h3>
                 <div class="space-y-4 md:space-y-6 text-base md:text-lg text-[#6B5E54] leading-relaxed max-w-2xl mx-auto md:mx-0">
                     <p>Since 2011, I’ve worked across high-pressure B2B environments, from manufacturing to large-scale distribution. I’ve seen how manual, unstructured operations slow businesses down, and watched how the right systems can change everything.</p>
@@ -285,75 +258,83 @@
         </div>
         
         <div class="grid gap-24 md:gap-48">
-            <!-- Case 1 -->
-            <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+            <!-- Case 1: Automated Ticketing -->
+            <section class="grid md:grid-cols-12 gap-8 md:gap-16 items-start">
                 <div class="md:col-span-7">
                     <div class="video-landscape glow-card">
-                        <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] md:text-xs p-8 text-center uppercase tracking-widest font-bold">
-                            [Landscape Demo: Ticketing System]
-                        </div>
+                        <iframe src="https://www.youtube.com/embed/Q4ILJoFZbIU" title="Automated Ticketing System Demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
                 <div class="md:col-span-5">
-                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 01 • Operations</span>
-                    <h3 class="text-3xl font-bold mb-4">Centralized Ticketing Hub</h3>
-                    <p class="text-[#6B5E54] leading-relaxed">Consolidating manual ticketing processes into a centralized ecosystem for better accountability.</p>
+                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 01 • Operations & Automation</span>
+                    <h3 class="text-3xl font-bold mb-2 text-[#3D342D]">Automated Ticketing & Transaction System</h3>
+                    <p class="text-xs font-bold text-[#B08D3E] uppercase tracking-widest mb-6 italic opacity-80">Travel Agency Workflow built with Google Workspace</p>
+                    <div class="space-y-6 text-[#6B5E54] text-sm md:text-base leading-relaxed">
+                        <p>A travel agency previously running on manual paperwork, with separate files, inconsistent formats, and no real-time visibility. I rebuilt the entire back-office workflow into one connected system using Google Sheets, Autocrat, and Looker Studio.</p>
+                        <p class="font-bold text-[#3D342D]">One input. Instant PDF output. Live dashboard. No double entry, no formatting errors, no digging through folders.</p>
+                        <div class="pt-4">
+                            <a href="https://drive.google.com/drive/folders/1Eex9lr9JtoTtR9eS_Q2rk1X32CD_8jlp?usp=sharing" target="_blank" class="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-[#B08D3E] hover:text-[#3D342D] transition-colors">
+                                <span>📄 View sample output</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </a>
+                        </div>
+                        <div class="pt-6 border-t border-[#B08D3E]/10">
+                            <p class="text-xs font-bold italic text-[#3D342D]">Want a system like this for your business? <a href="#contact" class="text-[#B08D3E] underline underline-offset-4">Let’s talk.</a></p>
+                        </div>
+                    </div>
                 </div>
             </section>
+
             <!-- Case 2 -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-5 text-right order-2 md:order-1">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 02 • Data Insight</span>
                     <h3 class="text-3xl font-bold mb-4 font-serif italic text-gold-deep">Community Dashboard</h3>
-                    <p class="text-[#6B5E54] leading-relaxed max-w-sm ml-auto">Mobile-first performance tracking for broadcast communities using Looker Studio.</p>
+                    <p class="text-[#6B5E54] max-w-sm ml-auto text-sm md:text-base leading-relaxed">Mobile-first Looker Studio performance tracking for broadcast communities.</p>
                 </div>
                 <div class="md:col-span-4 md:col-start-8 order-1 md:order-2">
-                    <div class="video-portrait glow-card mx-auto max-w-xs md:max-w-none">
-                        <div class="absolute inset-0 flex items-center justify-center text-[#B08D3E]/30 italic text-[10px] p-6 text-center uppercase font-bold">
-                            [Portrait Demo: Dashboard]
-                        </div>
-                    </div>
+                    <div class="video-portrait glow-card"></div>
                 </div>
             </section>
+
             <!-- Case 3 -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
-                <div class="md:col-span-7">
-                    <div class="video-landscape glow-card"></div>
-                </div>
+                <div class="md:col-span-7"><div class="video-landscape glow-card"></div></div>
                 <div class="md:col-span-5">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 03 • Finance</span>
                     <h3 class="text-3xl font-bold mb-4">Global Billing Templates</h3>
-                    <p class="text-[#6B5E54] leading-relaxed">Automated international billing with currency conversion directly in Google Sheets.</p>
+                    <p class="text-[#6B5E54] text-sm md:text-base leading-relaxed">Automated international billing with currency conversion directly in Google Sheets.</p>
                 </div>
             </section>
+
             <!-- Case 4 -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-5 text-right order-2 md:order-1">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 04 • Automation</span>
                     <h3 class="text-3xl font-bold mb-4 font-serif italic text-gold-deep">Form-to-Invoice Flow</h3>
-                    <p class="text-[#6B5E54] leading-relaxed max-w-sm ml-auto">From Google Form submission to fully generated PDF invoice automatically.</p>
+                    <p class="text-[#6B5E54] max-w-sm ml-auto text-sm md:text-base leading-relaxed">From Google Form submission to fully generated PDF invoice automatically.</p>
                 </div>
                 <div class="md:col-span-4 md:col-start-8 order-1 md:order-2">
                     <div class="video-portrait glow-card mx-auto max-w-xs md:max-w-none"></div>
                 </div>
             </section>
+
             <!-- Case 5 -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
-                <div class="md:col-span-7">
-                    <div class="video-landscape glow-card"></div>
-                </div>
+                <div class="md:col-span-7"><div class="video-landscape glow-card"></div></div>
                 <div class="md:col-span-5">
-                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 05 • Web</span>
+                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 05 • Web Dev</span>
                     <h3 class="text-3xl font-bold mb-4">Functional Web Presence</h3>
-                    <p class="text-[#6B5E54] leading-relaxed">WordPress extension for small businesses integrated with backend systems.</p>
+                    <p class="text-[#6B5E54] text-sm md:text-base leading-relaxed">WordPress extensions integrated with backend inquiry systems.</p>
                 </div>
             </section>
+
             <!-- Case 6 -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
                 <div class="md:col-span-5 text-right order-2 md:order-1">
                     <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 06 • VIP Support</span>
                     <h3 class="text-3xl font-bold mb-4 font-serif italic text-gold-deep">High-Stakes VIP Support</h3>
-                    <p class="text-[#6B5E54] max-w-sm ml-auto">Elite B2B relationship management and luxury sales communication.</p>
+                    <p class="text-[#6B5E54] max-w-sm ml-auto text-sm md:text-base leading-relaxed">Elite B2B relationship management and luxury sales communication.</p>
                 </div>
                 <div class="md:col-span-7 order-1 md:order-2">
                     <div class="video-landscape glow-card bg-white flex items-center justify-center">
@@ -374,7 +355,7 @@
                     <h3 class="text-3xl md:text-4xl font-bold mb-4 md:mb-6 text-[#3D342D]">Try My AI Consultant ✨</h3>
                     <p class="text-base md:text-lg text-[#6B5E54] mb-8">Describe one messy administrative task. My AI assistant will suggest a modern solution.</p>
                     <div class="space-y-4">
-                        <textarea id="ai-input" class="w-full bg-[#F9F7F2] border border-[#B08D3E]/20 rounded-2xl p-5 md:p-6 text-[#3D342D] focus:outline-none focus:border-[#B08D3E]" rows="3" placeholder="e.g. 'I struggle with tracking receipts...'"></textarea>
+                        <textarea id="ai-input" class="w-full bg-[#F9F7F2] border border-[#B08D3E]/20 rounded-2xl p-5 md:p-6 text-[#3D342D] focus:outline-none focus:border-[#B08D3E]" rows="3" placeholder="I struggle with tracking receipts..."></textarea>
                         <button id="ai-submit" onclick="generateAutomationSolution()" class="bg-[#B08D3E] text-white px-8 py-4 rounded-2xl font-bold text-sm tracking-widest uppercase hover:shadow-[0_0_25px_rgba(176,141,62,0.4)] transition-all w-full">Ask for Solution ✨</button>
                     </div>
                 </div>
@@ -393,7 +374,7 @@
     <footer id="contact" class="bg-[#3D342D] py-24 md:py-40 px-6 rounded-t-[3rem] text-center text-[#FAF3E0]">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 md:mb-10 text-white leading-tight">Ready to <span class="font-serif italic text-gold-deep">scale</span>?</h2>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
                 <a href="mailto:hello@annisa.com" class="bg-[#B08D3E] text-white px-12 py-5 rounded-2xl font-bold uppercase tracking-widest shadow-xl">Email Me</a>
                 <a href="#" class="border border-[#B08D3E]/40 px-12 py-5 rounded-2xl font-bold uppercase text-[#B08D3E]">WhatsApp</a>
             </div>
