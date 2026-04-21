@@ -24,6 +24,7 @@
         .font-serif { font-family: 'Playfair Display', serif; }
         .text-gold-deep { color: #B08D3E !important; }
 
+        /* Navigation & Buttons */
         .glow-button {
             background-color: var(--gold-deep);
             color: white;
@@ -34,6 +35,7 @@
             box-shadow: 0 0 25px rgba(176, 141, 62, 0.4);
         }
 
+        /* Card Effects */
         .glow-card {
             border: 1px solid rgba(176, 141, 62, 0.15);
             transition: all 0.4s ease;
@@ -43,83 +45,33 @@
             box-shadow: 0 0 30px rgba(176, 141, 62, 0.15);
         }
         
-        @keyframes rotate-glow { 
-            0% { transform: rotate(0deg); } 
-            100% { transform: rotate(360deg); } 
-        }
-        .glow-wrapper { 
-            position: relative; 
-            padding: 8px; 
-            border-radius: 9999px; 
-            overflow: hidden; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-        }
-        .glow-wrapper::before { 
-            content: ''; 
-            position: absolute; 
-            width: 150%; 
-            height: 150%; 
-            background: conic-gradient(from 0deg, transparent, transparent 60%, var(--gold-deep), var(--gold-accent), transparent); 
-            animation: rotate-glow 3s linear infinite; 
-            opacity: 0; 
-            transition: opacity 0.5s ease; 
-        }
+        /* Photo Animation */
+        @keyframes rotate-glow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .glow-wrapper { position: relative; padding: 8px; border-radius: 9999px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .glow-wrapper::before { content: ''; position: absolute; width: 150%; height: 150%; background: conic-gradient(from 0deg, transparent, transparent 60%, var(--gold-deep), var(--gold-accent), transparent); animation: rotate-glow 3s linear infinite; opacity: 0; transition: opacity 0.5s ease; }
         .glow-wrapper:hover::before { opacity: 1; }
-        .photo-inner { 
-            position: relative; 
-            z-index: 10; 
-            background-color: var(--bg-sand); 
-            border-radius: 9999px; 
-            overflow: hidden; 
-        }
+        .photo-inner { position: relative; z-index: 10; background-color: var(--bg-sand); border-radius: 9999px; overflow: hidden; }
 
-        /* --- VIDEO FRAME CONTROLS --- */
+        /* Frame Containers */
         .video-container { 
-            position: relative; 
-            width: 100%; 
-            border-radius: 1.5rem; 
-            overflow: hidden; 
-            background: #000; 
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            position: relative; width: 100%; border-radius: 1.5rem; overflow: hidden; background: #000; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
         }
         .video-landscape { padding-bottom: 56.25%; } 
-        .video-portrait { 
-            aspect-ratio: 9 / 16;
-            height: auto;
-            max-width: 100%;
-        }
-        .video-container iframe { 
-            position: absolute; 
-            top: 50%; left: 50%; 
-            width: 100%; height: 100%; 
-            transform: translate(-50%, -50%) scale(1.02);
-            border: none;
-        }
+        .video-portrait { aspect-ratio: 9 / 16; height: auto; max-width: 100%; }
+        .video-container iframe { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%) scale(1.02); border: none; }
 
-        /* Marquee Scrolling (Icon + Text) */
+        /* Marquee Tools */
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         .marquee { display: flex; width: fit-content; animation: scroll 40s linear infinite; }
-        .marquee-container { 
-            overflow: hidden; 
-            width: 100%; 
-            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); 
-        }
+        .marquee-container { overflow: hidden; width: 100%; mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
         .tool-item {
             display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 1.2rem; border-radius: 999px; background: rgba(176, 141, 62, 0.03); border: 1px solid rgba(176, 141, 62, 0.08); transition: all 0.4s ease; filter: grayscale(1); opacity: 0.5;
         }
-        .tool-item:hover {
-            filter: grayscale(0); opacity: 1; background: white; border-color: var(--gold-deep); transform: translateY(-2px);
-        }
+        .tool-item:hover { filter: grayscale(0); opacity: 1; background: white; border-color: var(--gold-deep); transform: translateY(-2px); }
         .tool-name { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #6B5E54; white-space: nowrap; }
 
         .headline-accent { position: relative; display: inline-block; }
-        .headline-accent::after { 
-            content: ''; 
-            position: absolute; 
-            bottom: 0.1em; left: 0; width: 100%; height: 0.15em; background-color: rgba(176, 141, 62, 0.15); z-index: -1; 
-        }
+        .headline-accent::after { content: ''; position: absolute; bottom: 0.1em; left: 0; width: 100%; height: 0.15em; background-color: rgba(176, 141, 62, 0.15); z-index: -1; }
         html { scroll-behavior: smooth; }
     </style>
 </head>
@@ -131,7 +83,7 @@
         <div class="flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest opacity-60 text-[#3D342D]">
             <a href="#about" class="hover:text-gold-deep transition-all">Profile</a>
             <a href="#projects" class="hover:text-gold-deep transition-all text-gold-deep">Work</a>
-            <a href="https://wa.me/62895324851027?text=Hi%20Annisa%2C%20I%20saw%20your%20modern%20admin%20portfolio.%20Are%20you%20available%20for%20a%20brief%20discussion%20about%20strategic%20automation%20for%20my%20business%3F" target="_blank" class="glow-button px-6 py-2 rounded-full shadow-sm text-white bg-[#B08D3E]">Work with me</a>
+            <a href="https://wa.me/62895324851027?text=Hi%20Annisa%2C%20I%20saw%20your%20modern%20admin%20portfolio.%20Are%20you%20available%20for%20a%20brief%20discussion%20about%20strategic%20automation%20for%20my%20business%3F" target="_blank" class="glow-button px-6 py-2 rounded-full shadow-sm">Work with me</a>
         </div>
     </nav>
 
@@ -187,7 +139,7 @@
         </div>
     </section>
 
-    <!-- Profil Profesional -->
+    <!-- Profile Section -->
     <section id="about" class="max-w-7xl mx-auto px-6 pb-24 md:pb-40">
         <div class="grid md:grid-cols-12 gap-10 md:gap-16 items-center">
             <div class="md:col-span-4 flex justify-center">
@@ -197,10 +149,10 @@
                     </div>
                 </div>
             </div>
-            <div class="md:col-span-8 text-center md:text-left mt-10 md:mt-0">
+            <div class="md:col-span-8 text-center md:text-left">
                 <h2 class="text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] mb-6 tracking-[0.5em]">Professional Profile</h2>
                 <h3 class="text-3xl md:text-5xl font-bold mb-8 text-[#3D342D]">Annisa Islamiasih <br/><span class="font-serif italic text-gold-deep">Modern Admin Strategist</span></h3>
-                <div class="space-y-6 text-base md:text-lg text-[#6B5E54] leading-relaxed max-w-2xl mx-auto md:mx-0">
+                <div class="space-y-6 text-base md:text-lg text-[#6B5E54] leading-relaxed max-w-2xl mx-auto md:mx-0 text-justify md:text-left">
                     <p>Since 2011, I’ve worked across high-pressure B2B environments, from manufacturing to large-scale distribution. Over time, I’ve seen how manual, unstructured operations slow businesses down and how the right systems can change everything.</p>
                     <p>I believe admin isn’t just support. It’s the foundation of how a business grows.</p>
                     <p>Today, I help business owners turn messy, repetitive processes into structured, efficient systems using practical, modern tools. The goal is simple. Less manual work, fewer errors, and operations that are easier to manage and ready to scale.</p>
@@ -237,7 +189,7 @@
                     </div>
                 </div>
                 <div class="md:col-span-5">
-                    <span class="text-[9px] md:text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 01 • Operations & Automation</span>
+                    <span class="text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block">Case 01 • Operations & Automation</span>
                     <h3 class="text-3xl font-bold mb-2 text-[#3D342D]">Automated Ticketing & Transaction System</h3>
                     <p class="text-xs font-bold text-[#B08D3E] uppercase tracking-widest mb-6 italic opacity-80">Travel Agency Workflow built with Google Workspace</p>
                     <div class="space-y-6 text-[#6B5E54] text-sm md:text-base leading-relaxed">
@@ -314,7 +266,7 @@
                 </div>
             </section>
 
-            <!-- Case 05: Travel Web (Landscape Scale) -->
+            <!-- Case 05: Travel Web (Landscape Version) -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-16 items-start">
                 <div class="md:col-span-7">
                     <div class="video-container video-landscape glow-card">
@@ -334,7 +286,7 @@
                 </div>
             </section>
 
-            <!-- Case 06: VIP Handling (Portrait Scale - REAL DATA) -->
+            <!-- Case 06: VIP Handling (Portrait Scale) -->
             <section class="grid md:grid-cols-12 gap-8 md:gap-16 items-center">
                 <div class="md:col-span-5 text-right order-2 md:order-1">
                     <span class="text-[10px] font-bold text-[#B08D3E] uppercase tracking-[0.3em] mb-4 block text-gold-deep">Case 06 • VIP Ops</span>
@@ -352,6 +304,54 @@
                     </div>
                 </div>
             </section>
+        </div>
+
+        <!-- NEW: AI-Assisted Work & Experiments -->
+        <div class="mt-40">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-[11px] font-bold uppercase tracking-[0.5em] text-[#B08D3E] tracking-[0.5em]">AI-Assisted Work & Experiments</h2>
+                <div class="h-[1px] bg-[#3D342D]/10 flex-grow ml-12"></div>
+            </div>
+            
+            <p class="text-[#B08D3E] text-[10px] font-bold uppercase mb-4 tracking-[0.2em]">Exploring practical ways to support everyday workflows with AI</p>
+            <p class="text-[#6B5E54] text-sm md:text-base mb-16 leading-relaxed max-w-3xl">
+                As part of a short training program organized by the local government on AI implementation for digital marketing, I explored how AI tools can be used to create content more efficiently. 
+                The following examples are presented in Bahasa Indonesia, but I’m flexible in adapting the language based on the target audience.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-16 md:gap-12 items-start">
+                <!-- Example 1: Video Portrait -->
+                <div class="space-y-8">
+                    <div class="video-container video-portrait glow-card mx-auto md:mx-0 shadow-2xl border-4 border-white/5" style="max-width: 320px;">
+                        <iframe src="https://www.youtube.com/embed/hLkFlaAKyPo?rel=0&modestbranding=1&autoplay=0" allowfullscreen></iframe>
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold mb-4 text-[#3D342D]">AI-Generated Marketing Video</h4>
+                        <p class="text-[#6B5E54] text-sm md:text-base leading-relaxed">
+                            A sample short-form video created for marketing purposes. The product shown in the video does not have a physical prototype. This content is a combination of multiple AI-generated assets from different platforms, refined through simple editing into a single, clean final output.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Example 2: Presentation Image -->
+                <div class="space-y-8">
+                    <div class="video-container glow-card shadow-2xl border-4 border-white/5 overflow-hidden">
+                        <img src="https://islanisaaa.github.io/portfolio/file07.jpeg" alt="Slide Presentation" class="w-full h-auto object-cover">
+                    </div>
+                    <div>
+                        <h4 class="text-2xl font-bold mb-4 text-[#3D342D]">Slide Presentation: AI Implementation for Digital Marketing</h4>
+                        <p class="text-[#6B5E54] text-sm md:text-base leading-relaxed mb-6">
+                            A presentation created with the help of <a href="https://gamma.app/?gad_campaignid=22882492255&gad_source=1&gbraid=0AAAAAqWjqPT_cN8r5MBoaFJtIxJnb6gYq&gclid=CjwKCAjwwJzPBhBREiwAJfHRnRlKDTqNAgqkNYjeynmc1A4sEaYQ4WzNw2SLLdn6NlsBMQBMCaiPxhoC4woQAvD_BwE&utm_campaign=22882492255&utm_content=181460289337&utm_id=tw&utm_medium=search&utm_source=google&utm_term=gamma.app" target="_blank" class="text-[#B08D3E] underline underline-offset-4">Gamma App</a>, where the initial structure, layout, and visual direction were generated within minutes.
+                            The content summarizes key insights from a 10-session training program, refined into a clear and structured presentation.
+                        </p>
+                        <a href="https://docs.google.com/presentation/d/13s3CdScX4IFRsF6Bmi_z0F3V-DHAcK8xrzJognv9_OE/edit?usp=sharing" target="_blank" class="text-[10px] font-bold uppercase tracking-widest text-[#B08D3E] hover:underline">📄 View sample →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-24 text-center">
+                <p class="text-lg font-serif italic text-gold-deep opacity-80">"I use AI to support how I work, not to replace it."</p>
+            </div>
         </div>
     </main>
 
@@ -396,7 +396,6 @@
                 <a href="https://wa.me/62895324851027?text=Hi%20Annisa%2C%20I%20saw%20your%20modern%20admin%20portfolio.%20Are%20you%20available%20for%20a%20brief%20discussion%20about%20strategic%20automation%20for%20my%20business%3F" class="border border-[#B08D3E]/40 px-10 py-6 rounded-2xl font-bold uppercase tracking-[0.2em] text-[#B08D3E] hover:bg-white/5 transition-all text-sm w-full sm:w-auto">
                     WhatsApp
                 </a>
-                <!-- CV Button -->
                 <a href="https://wa.me/62895324851027?text=Hi%20Annisa%2C%20I'm%20interested%20in%20your%20profile.%20Could%20you%20please%20share%20your%20latest%20CV%3F%20I'd%20like%20to%20review%20it%20for%20a%20potential%20collaboration." class="bg-white/10 border border-white/20 px-10 py-6 rounded-2xl font-bold uppercase tracking-[0.2em] text-white hover:bg-white/20 transition-all text-sm w-full sm:w-auto">
                     Request My CV
                 </a>
