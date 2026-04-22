@@ -468,55 +468,54 @@
     </footer>
 
 <script>
-    const GEMINI_API_KEY = "AIzaSyBlca6BeqNHsu7-9T9Gn2vWV91Ejq99NbY"; 
-
     async function generateAutomationSolution() {
-        const inputField = document.getElementById('ai-input');
-        const outputDiv = document.getElementById('ai-response-text');
+        const input = document.getElementById('ai-input');
+        const output = document.getElementById('ai-response-text');
         const placeholder = document.getElementById('ai-placeholder');
         const loading = document.getElementById('ai-loading');
-        const submitBtn = document.getElementById('ai-submit');
+        const btn = document.getElementById('ai-submit');
         
-        const userInput = inputField.value.trim();
-        if (!userInput) return;
+        // Link Apps Script kamu sudah terpasang di sini
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxGN2_g7ySWa67us7ZCdtSJl5xXLp0vYhxBwrTfp18BTrUMizI_jJDdxvhFtJRKOL0G/exec"; 
 
+        if (!input.value.trim()) {
+            alert("Tuliskan dulu masalah admin kamu ya!");
+            return;
+        }
+
+        // UI State: Loading ON
         placeholder.classList.add('hidden');
-        outputDiv.classList.add('hidden');
+        output.classList.add('hidden');
         loading.classList.remove('hidden');
-        submitBtn.disabled = true;
-
-        const systemPrompt = "You are Annisa's Modern Admin Strategic Assistant. Provide a 3-step automation solution in English. Under 100 words.";
+        btn.disabled = true;
+        btn.innerText = "Thinking...";
 
         try {
-            // KITA GUNAKAN PROXY UNTUK MENGAKALI MASALAH LOKASI
-            const proxyUrl = "https://corsproxy.io/?";
-            const targetUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-
-            const response = await fetch(proxyUrl + encodeURIComponent(targetUrl), {
+            const response = await fetch(WEB_APP_URL, {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
+                // Apps Script membutuhkan body dalam bentuk text/plain atau tanpa header khusus
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: systemPrompt + "\n\nUser Question: " + userInput }] }]
+                    contents: [{ parts: [{ text: "You are Annisa's Strategic Assistant. Provide a brief 3-step automation solution in English for: " + input.value }] }]
                 })
             });
 
             const data = await response.json();
             
-            if (data.error) throw new Error(data.error.message);
-
             if (data.candidates && data.candidates[0].content) {
                 loading.classList.add('hidden');
-                outputDiv.innerText = data.candidates[0].content.parts[0].text;
-                outputDiv.classList.remove('hidden');
+                output.innerText = data.candidates[0].content.parts[0].text;
+                output.classList.remove('hidden');
+            } else {
+                throw new Error("No response from AI");
             }
-        } catch (error) {
+        } catch (e) {
+            console.error("Error detail:", e);
             loading.classList.add('hidden');
-            // Jika proxy gagal, beri tahu user untuk coba lagi
-            outputDiv.innerText = "Location still restricted. Please try using a different network or check back later.";
-            outputDiv.classList.remove('hidden');
-            console.error(error);
+            output.innerText = "Yess! Jalur VIP berhasil. Tapi AI lagi sedikit sibuk, coba klik sekali lagi ya!";
+            output.classList.remove('hidden');
         } finally {
-            submitBtn.disabled = false;
+            btn.disabled = false;
+            btn.innerText = "Ask for Solution ✨";
         }
     }
 </script>
