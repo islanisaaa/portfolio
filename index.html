@@ -468,7 +468,7 @@
     </footer>
 
 <script>
-    async function generateAutomationSolution() {
+    function generateAutomationSolution() {
         const input = document.getElementById('ai-input');
         const output = document.getElementById('ai-response-text');
         const placeholder = document.getElementById('ai-placeholder');
@@ -483,26 +483,31 @@
         loading.classList.remove('hidden');
         btn.disabled = true;
 
-        // URL HASIL DEPLOY TERBARU KAMU
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxGN2_g7ySWa67us7ZCdtSJl5xXLp0vYhxBwrTfp18BTrUMizI_jJDdxvhFtJRKOL0G/exec"; 
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw-2hBemyziA3YFWlCNQjmftMp7XoUAaHU0nYMIcTsoET0a3dxu8HErxrYt9rhtKo23/exec"; 
 
-        try {
-            const response = await fetch(WEB_APP_URL + "?q=" + encodeURIComponent(userInput));
-            
-            // KITA AMBIL SEBAGAI TEXT, BUKAN JSON
-            const data = await response.text();
-
+        // Fungsi Global untuk menangkap jawaban
+        window.handleAIResponse = function(data) {
             loading.classList.add('hidden');
-            output.innerText = data; // Langsung tempel tulisannya
+            output.innerText = data.result; // Menampilkan hasil
             output.classList.remove('hidden');
-        } catch (e) {
-            console.error(e);
-            loading.classList.add('hidden');
-            output.innerText = "Koneksi sukses! Coba klik sekali lagi untuk memunculkan teks.";
-            output.classList.remove('hidden');
-        } finally {
             btn.disabled = false;
-        }
+            // Hapus script sementara setelah selesai
+            document.body.removeChild(document.getElementById('ai-script-loader'));
+        };
+
+        // Buat elemen script untuk memanggil API
+        const script = document.createElement('script');
+        script.id = 'ai-script-loader';
+        script.src = WEB_APP_URL + "?q=" + encodeURIComponent(userInput) + "&callback=handleAIResponse";
+        
+        script.onerror = function() {
+            loading.classList.add('hidden');
+            output.innerText = "Koneksi terhambat, coba klik lagi ya!";
+            output.classList.remove('hidden');
+            btn.disabled = false;
+        };
+
+        document.body.appendChild(script);
     }
 </script>
 </body>
