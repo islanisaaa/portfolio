@@ -475,20 +475,20 @@
         const loading = document.getElementById('ai-loading');
         const btn = document.getElementById('ai-submit');
         
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxGN2_g7ySWa67us7ZCdtSJl5xXLp0vYhxBwrTfp18BTrUMizI_jJDdxvhFtJRKOL0G/exec"; 
+        // MASUKKAN URL HASIL DEPLOY ULANG TADI DI SINI
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzMfdjDvGuUfhkDlH7CpVYiIC-06fLu4m6Vks31Eai5MVVGl4LGD5EqnMx0clr7Vew/exec"; 
 
         if (!input.value.trim()) return;
 
-        // UI State
         placeholder.classList.add('hidden');
         output.classList.add('hidden');
         loading.classList.remove('hidden');
         btn.disabled = true;
 
         try {
-            // JANGAN PAKAI no-cors, biarkan default agar data bisa terbaca
             const response = await fetch(WEB_APP_URL, {
                 method: 'POST',
+                // Kita kirim sebagai plain text supaya Google Script nggak bingung soal CORS
                 body: JSON.stringify({
                     contents: [{ parts: [{ text: "Berikan solusi admin 3 langkah untuk: " + input.value }] }]
                 })
@@ -496,18 +496,17 @@
 
             const data = await response.json();
             
-            if (data && data.candidates) {
+            if (data.candidates && data.candidates[0].content) {
                 loading.classList.add('hidden');
                 output.innerText = data.candidates[0].content.parts[0].text;
                 output.classList.remove('hidden');
-            } else {
-                throw new Error("Data kosong");
+            } else if (data.error) {
+                throw new Error(data.error);
             }
         } catch (e) {
             console.error(e);
             loading.classList.add('hidden');
-            // Jika masih error, tampilkan hasil mentah buat jaga-jaga
-            output.innerText = "Error: " + e.message + ". Coba klik sekali lagi ya, Annisa!";
+            output.innerText = "Duh, masih ada kendala teknis. Pastikan URL Web App sudah benar ya, Annisa!";
             output.classList.remove('hidden');
         } finally {
             btn.disabled = false;
