@@ -468,53 +468,79 @@
     </footer>
 
 <script>
+    // API Key baru kamu sudah terpasang di sini
+    const GEMINI_API_KEY = "AIzaSyAFTzyzX4fi7QRaLoWf7zWIxTvwf6wVaxs"; 
+
     async function generateAutomationSolution() {
-        const GEMINI_API_KEY = "AIzaSyCH36fNTTt5CXPs22_q8_7DEOQZKeWhEjo"; 
-        
-        // Ambil Elemen
-        const input = document.getElementById('ai-input');
-        const output = document.getElementById('ai-response-text');
+        // 1. Ambil semua elemen HTML berdasarkan ID yang sudah kamu buat
+        const inputField = document.getElementById('ai-input');
+        const outputDiv = document.getElementById('ai-response-text');
         const placeholder = document.getElementById('ai-placeholder');
         const loading = document.getElementById('ai-loading');
-        const btn = document.getElementById('ai-submit');
+        const submitBtn = document.getElementById('ai-submit');
         
-        if (!input.value.trim()) {
-            alert("Please describe your problem first!");
+        const userInput = inputField.value.trim();
+        
+        // 2. Validasi jika input kosong
+        if (!userInput) {
+            alert("Please describe your admin mess first!");
             return;
         }
 
-        // Jalankan Loading
+        // 3. UI State: Sembunyikan teks lama, tampilkan loading
         placeholder.classList.add('hidden');
-        output.classList.add('hidden');
+        outputDiv.classList.add('hidden');
         loading.classList.remove('hidden');
-        btn.disabled = true;
-        btn.innerText = "Thinking...";
+        
+        // Kunci tombol agar tidak diklik dua kali
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = "0.5";
+        submitBtn.innerText = "Thinking...";
+
+        // 4. Instruksi untuk AI (System Prompt)
+        const systemPrompt = "You are Annisa's Modern Admin Strategic Assistant. Provide a brief, professional 3-step automation solution in English using Google Workspace and AI tools. Structure: 1. Strategic Insight, 2. Action Steps, 3. Call to consult Annisa. Keep it under 150 words.";
 
         try {
+            // 5. Panggil API Google Gemini (Versi v1 paling stabil)
             const response = await fetch(`https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: "You are a strategic admin assistant. Solve this: " + input.value }] }]
+                    contents: [{
+                        parts: [{ text: systemPrompt + "\n\nUser Question: " + userInput }]
+                    }]
                 })
             });
 
             const data = await response.json();
             
-            if (data.candidates && data.candidates[0].content) {
-                loading.classList.add('hidden');
-                output.innerText = data.candidates[0].content.parts[0].text;
-                output.classList.remove('hidden');
-            } else {
-                throw new Error("No response");
+            // Cek jika ada error dari Google (seperti limit atau key bermasalah)
+            if (data.error) {
+                throw new Error(data.error.message);
             }
-        } catch (e) {
+
+            // 6. Tampilkan hasil jika sukses
+            if (data.candidates && data.candidates[0].content) {
+                const aiText = data.candidates[0].content.parts[0].text;
+                
+                loading.classList.add('hidden');
+                outputDiv.innerText = aiText;
+                outputDiv.classList.remove('hidden');
+            } else {
+                throw new Error("I couldn't generate a solution. Please try rephrasing your mess.");
+            }
+
+        } catch (error) {
+            // 7. Penanganan Error (Jika koneksi putus atau API ditolak)
+            console.error("Gemini Error:", error);
             loading.classList.add('hidden');
-            output.innerText = "Connection error. Please check your internet or API key.";
-            output.classList.remove('hidden');
+            outputDiv.innerText = "Error: " + error.message + ". Please check your internet or contact Annisa directly.";
+            outputDiv.classList.remove('hidden');
         } finally {
-            btn.disabled = false;
-            btn.innerText = "Ask for Solution ✨";
+            // Kembalikan tombol ke keadaan semula
+            submitBtn.disabled = false;
+            submitBtn.style.opacity = "1";
+            submitBtn.innerText = "Ask for Solution ✨";
         }
     }
 </script>
