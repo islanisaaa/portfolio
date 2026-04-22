@@ -477,53 +477,40 @@
         
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxGN2_g7ySWa67us7ZCdtSJl5xXLp0vYhxBwrTfp18BTrUMizI_jJDdxvhFtJRKOL0G/exec"; 
 
-        const userInput = input.value.trim();
-        if (!userInput) return;
+        if (!input.value.trim()) return;
 
         // UI State
         placeholder.classList.add('hidden');
         output.classList.add('hidden');
         loading.classList.remove('hidden');
         btn.disabled = true;
-        btn.innerText = "Processing...";
 
         try {
+            // JANGAN PAKAI no-cors, biarkan default agar data bisa terbaca
             const response = await fetch(WEB_APP_URL, {
                 method: 'POST',
-                mode: 'no-cors', // Menghindari masalah keamanan browser tertentu
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: "Strategic Admin: Berikan solusi 3 langkah dalam Bahasa Inggris untuk: " + userInput }] }]
+                    contents: [{ parts: [{ text: "Berikan solusi admin 3 langkah untuk: " + input.value }] }]
                 })
             });
 
-            // Karena kita pakai 'no-cors', kita beri jeda 2 detik agar AI selesai berpikir
-            // Lalu kita panggil lagi untuk ambil hasilnya
-            setTimeout(async () => {
-                try {
-                    const finalResponse = await fetch(WEB_APP_URL);
-                    const data = await finalResponse.json();
-                    
-                    if (data.candidates && data.candidates[0].content) {
-                        loading.classList.add('hidden');
-                        output.innerText = data.candidates[0].content.parts[0].text;
-                        output.classList.remove('hidden');
-                    }
-                } catch (err) {
-                    // Jika percobaan kedua gagal, tampilkan pesan manual
-                    loading.classList.add('hidden');
-                    output.innerText = "Solusi AI sudah siap! Silakan klik tombol sekali lagi untuk menampilkan teksnya.";
-                    output.classList.remove('hidden');
-                }
-            }, 2500);
-
+            const data = await response.json();
+            
+            if (data && data.candidates) {
+                loading.classList.add('hidden');
+                output.innerText = data.candidates[0].content.parts[0].text;
+                output.classList.remove('hidden');
+            } else {
+                throw new Error("Data kosong");
+            }
         } catch (e) {
             console.error(e);
             loading.classList.add('hidden');
-            output.innerText = "Sedang menghubungkan ke AI... Klik sekali lagi ya!";
+            // Jika masih error, tampilkan hasil mentah buat jaga-jaga
+            output.innerText = "Error: " + e.message + ". Coba klik sekali lagi ya, Annisa!";
             output.classList.remove('hidden');
         } finally {
             btn.disabled = false;
-            btn.innerText = "Ask for Solution ✨";
         }
     }
 </script>
