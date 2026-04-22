@@ -489,8 +489,8 @@
         const systemPrompt = "You are Annisa's Modern Admin Strategic Assistant. Provide a brief 3-step automation solution in English. Under 100 words.";
 
         try {
-            // URL & MODEL TERBARU: Menggunakan v1beta dengan model gemini-pro (paling stabil)
-            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
+            // PERBAIKAN KRUSIAL: Menggunakan v1beta agar nama model gemini-1.5-flash ditemukan
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -513,7 +513,8 @@
         } catch (error) {
             console.error("Final Debug:", error);
             loading.classList.add('hidden');
-            outputDiv.innerText = "Error: " + error.message;
+            // Menampilkan pesan yang lebih ramah jika terjadi error lagi
+            outputDiv.innerText = "Error: " + error.message + ". Please try again later.";
             outputDiv.classList.remove('hidden');
         } finally {
             submitBtn.disabled = false;
