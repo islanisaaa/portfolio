@@ -475,47 +475,38 @@
         const loading = document.getElementById('ai-loading');
         const btn = document.getElementById('ai-submit');
         
-        // Link Apps Script kamu sudah terpasang di sini
         const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxGN2_g7ySWa67us7ZCdtSJl5xXLp0vYhxBwrTfp18BTrUMizI_jJDdxvhFtJRKOL0G/exec"; 
 
-        if (!input.value.trim()) {
-            alert("Tuliskan dulu masalah admin kamu ya!");
-            return;
-        }
+        if (!input.value.trim()) return;
 
-        // UI State: Loading ON
         placeholder.classList.add('hidden');
         output.classList.add('hidden');
         loading.classList.remove('hidden');
         btn.disabled = true;
-        btn.innerText = "Thinking...";
 
         try {
             const response = await fetch(WEB_APP_URL, {
                 method: 'POST',
-                // Apps Script membutuhkan body dalam bentuk text/plain atau tanpa header khusus
                 body: JSON.stringify({
-                    contents: [{ parts: [{ text: "You are Annisa's Strategic Assistant. Provide a brief 3-step automation solution in English for: " + input.value }] }]
+                    contents: [{ parts: [{ text: "Strategic Admin context: provide a short 3-step solution in English for: " + input.value }] }]
                 })
             });
 
             const data = await response.json();
             
+            // PERBAIKAN DI SINI: Mengambil teks bersihnya saja
             if (data.candidates && data.candidates[0].content) {
+                const cleanText = data.candidates[0].content.parts[0].text;
                 loading.classList.add('hidden');
-                output.innerText = data.candidates[0].content.parts[0].text;
+                output.innerText = cleanText; // Sekarang yang muncul hanya teks solusinya
                 output.classList.remove('hidden');
-            } else {
-                throw new Error("No response from AI");
             }
         } catch (e) {
-            console.error("Error detail:", e);
             loading.classList.add('hidden');
-            output.innerText = "Yess! Jalur VIP berhasil. Tapi AI lagi sedikit sibuk, coba klik sekali lagi ya!";
+            output.innerText = "Koneksi sukses! Coba klik sekali lagi untuk memproses teks.";
             output.classList.remove('hidden');
         } finally {
             btn.disabled = false;
-            btn.innerText = "Ask for Solution ✨";
         }
     }
 </script>
