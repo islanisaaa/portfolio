@@ -468,49 +468,42 @@
     </footer>
 
 <script>
-    async function generateAutomationSolution() {
+    function generateAutomationSolution() {
         const input = document.getElementById('ai-input');
         const output = document.getElementById('ai-response-text');
         const placeholder = document.getElementById('ai-placeholder');
         const loading = document.getElementById('ai-loading');
         const btn = document.getElementById('ai-submit');
         
-        // MASUKKAN URL HASIL DEPLOY ULANG TADI DI SINI
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzMfdjDvGuUfhkDlH7CpVYiIC-06fLu4m6Vks31Eai5MVVGl4LGD5EqnMx0clr7Vew/exec"; 
-
-        if (!input.value.trim()) return;
+        const userInput = input.value.trim();
+        if (!userInput) return;
 
         placeholder.classList.add('hidden');
         output.classList.add('hidden');
         loading.classList.remove('hidden');
         btn.disabled = true;
 
-        try {
-            const response = await fetch(WEB_APP_URL, {
-                method: 'POST',
-                // Kita kirim sebagai plain text supaya Google Script nggak bingung soal CORS
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: "Berikan solusi admin 3 langkah untuk: " + input.value }] }]
-                })
-            });
+        // URL BARU DARI DEPLOY TADI
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwalbp2D3Zdzcc02wbs-XyqBtLx3SteKIPS7pS4AoXb3Mxr07Qrpreu5xzBU0qK2D1x/exec"; 
 
-            const data = await response.json();
-            
-            if (data.candidates && data.candidates[0].content) {
-                loading.classList.add('hidden');
-                output.innerText = data.candidates[0].content.parts[0].text;
-                output.classList.remove('hidden');
-            } else if (data.error) {
-                throw new Error(data.error);
-            }
-        } catch (e) {
-            console.error(e);
+        // Trik JSONP: Buat elemen script baru
+        const script = document.createElement('script');
+        
+        // Nama fungsi buat nerima data
+        window.handleResponse = function(data) {
             loading.classList.add('hidden');
-            output.innerText = "Duh, masih ada kendala teknis. Pastikan URL Web App sudah benar ya, Annisa!";
+            if (data.candidates) {
+                output.innerText = data.candidates[0].content.parts[0].text;
+            } else {
+                output.innerText = "Duh, gagal ambil data. Coba klik lagi ya!";
+            }
             output.classList.remove('hidden');
-        } finally {
             btn.disabled = false;
-        }
+            document.body.removeChild(script); // Hapus script biar bersih
+        };
+
+        script.src = WEB_APP_URL + "?q=" + encodeURIComponent(userInput) + "&callback=handleResponse";
+        document.body.appendChild(script);
     }
 </script>
 </body>
