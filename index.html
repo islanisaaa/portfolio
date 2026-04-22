@@ -468,7 +468,7 @@
     </footer>
 
 <script>
-    function generateAutomationSolution() {
+    async function generateAutomationSolution() {
         const input = document.getElementById('ai-input');
         const output = document.getElementById('ai-response-text');
         const placeholder = document.getElementById('ai-placeholder');
@@ -483,27 +483,25 @@
         loading.classList.remove('hidden');
         btn.disabled = true;
 
-        // URL BARU DARI DEPLOY TADI
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwalbp2D3Zdzcc02wbs-XyqBtLx3SteKIPS7pS4AoXb3Mxr07Qrpreu5xzBU0qK2D1x/exec"; 
+        // MASUKKAN URL HASIL DEPLOY BARU TADI DI SINI
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxOfyPQBoFmMAyPNroxT99xPLwYkZWhi8HxqTj7WvwA_6o294y5EPh6bFXRlOeZQzww/exec"; 
 
-        // Trik JSONP: Buat elemen script baru
-        const script = document.createElement('script');
-        
-        // Nama fungsi buat nerima data
-        window.handleResponse = function(data) {
+        try {
+            // Kita panggil pake GET biasa, kayak buka link di browser
+            const response = await fetch(WEB_APP_URL + "?q=" + encodeURIComponent(userInput));
+            const resultText = await response.text(); // Ambil teksnya langsung
+
             loading.classList.add('hidden');
-            if (data.candidates) {
-                output.innerText = data.candidates[0].content.parts[0].text;
-            } else {
-                output.innerText = "Duh, gagal ambil data. Coba klik lagi ya!";
-            }
+            output.innerText = resultText;
             output.classList.remove('hidden');
+        } catch (e) {
+            console.error(e);
+            loading.classList.add('hidden');
+            output.innerText = "Hampir jadi! Coba klik sekali lagi ya, Annisa.";
+            output.classList.remove('hidden');
+        } finally {
             btn.disabled = false;
-            document.body.removeChild(script); // Hapus script biar bersih
-        };
-
-        script.src = WEB_APP_URL + "?q=" + encodeURIComponent(userInput) + "&callback=handleResponse";
-        document.body.appendChild(script);
+        }
     }
 </script>
 </body>
