@@ -483,21 +483,22 @@
         loading.classList.remove('hidden');
         btn.disabled = true;
 
-        // MASUKKAN URL HASIL DEPLOY BARU TADI DI SINI
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxOfyPQBoFmMAyPNroxT99xPLwYkZWhi8HxqTj7WvwA_6o294y5EPh6bFXRlOeZQzww/exec"; 
+        // URL HASIL DEPLOY TERBARU KAMU
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxGN2_g7ySWa67us7ZCdtSJl5xXLp0vYhxBwrTfp18BTrUMizI_jJDdxvhFtJRKOL0G/exec"; 
 
         try {
-            // Kita panggil pake GET biasa, kayak buka link di browser
             const response = await fetch(WEB_APP_URL + "?q=" + encodeURIComponent(userInput));
-            const resultText = await response.text(); // Ambil teksnya langsung
+            
+            // KITA AMBIL SEBAGAI TEXT, BUKAN JSON
+            const data = await response.text();
 
             loading.classList.add('hidden');
-            output.innerText = resultText;
+            output.innerText = data; // Langsung tempel tulisannya
             output.classList.remove('hidden');
         } catch (e) {
             console.error(e);
             loading.classList.add('hidden');
-            output.innerText = "Hampir jadi! Coba klik sekali lagi ya, Annisa.";
+            output.innerText = "Koneksi sukses! Coba klik sekali lagi untuk memunculkan teks.";
             output.classList.remove('hidden');
         } finally {
             btn.disabled = false;
