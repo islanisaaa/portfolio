@@ -60,18 +60,49 @@
         .video-portrait { aspect-ratio: 9 / 16; height: auto; max-width: 100%; }
         .video-container iframe { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%) scale(1.02); border: none; }
 
-        /* Marquee Logic Infinity Loop */
+        /* Marquee Logic Infinity Loop - TETAP SAMA */
         @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes scroll-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
         
-        .marquee-container { overflow: hidden; width: 100%; mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
-        .marquee-content { display: flex; width: max-content; gap: 2rem; align-items: center; }
+        /* 1. Tambahkan height di sini agar baris 1 & 2 tingginya sama persis */
+        .marquee-container { 
+            overflow: hidden; 
+            width: 100%; 
+            height: 90px; /* <--- Kunci tinggi kontainer di sini */
+            display: flex; /* <--- Biar konten di dalamnya bisa di-center */
+            align-items: center; /* <--- Menjaga middle align */
+            mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); 
+            -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); 
+        }
+
+        /* 2. Pastikan content selalu di tengah secara vertikal */
+        .marquee-content { 
+            display: flex; 
+            width: max-content; 
+            gap: 2rem; 
+            align-items: center; 
+            height: 100%; /* <--- Paksa ikut tinggi container */
+        }
         
         .tool-item {
-            display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 1.2rem; border-radius: 999px; background: rgba(176, 141, 62, 0.03); border: 1px solid rgba(176, 141, 62, 0.08); transition: all 0.4s ease; filter: grayscale(1); opacity: 0.5;
+            display: flex; 
+            align-items: center; 
+            gap: 0.75rem; 
+            padding: 0.6rem 1.2rem; 
+            border-radius: 999px; 
+            background: rgba(176, 141, 62, 0.03); 
+            border: 1px solid rgba(176, 141, 62, 0.08); 
+            transition: all 0.4s ease; 
+            filter: grayscale(1); 
+            opacity: 0.5;
+            height: 42px; /* <--- Kunci tinggi item agar seragam */
         }
+
         .tool-item:hover { filter: grayscale(0); opacity: 1; background: white; border-color: var(--gold-deep); transform: translateY(-2px); }
-        .tool-item svg { width: 20px; height: 20px; flex-shrink: 0; }
+        
+        /* 3. Pastikan ukuran icon dikunci agar tidak mendorong baris */
+        .tool-item svg { width: 24px !important; height: 24px !important; flex-shrink: 0; }
+        
         .tool-name { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #6B5E54; white-space: nowrap; }
 
         .headline-accent { position: relative; display: inline-block; }
@@ -160,7 +191,7 @@
                 </div>
 
                 <!-- BARIS 2: Ke Kanan (AI & Creative) - 16 Tools -->
-                <div class="marquee-container border-b border-[#3D342D]/10 py-4">
+                <div class="marquee-container border-b border-[#3D342D]/10 py-6">
     <div class="marquee-content" style="animation: scroll-right 20s linear infinite;">
         <div class="tool-item">
             <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
