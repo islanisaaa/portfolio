@@ -60,28 +60,25 @@
         .video-portrait { aspect-ratio: 9 / 16; height: auto; max-width: 100%; }
         .video-container iframe { position: absolute; top: 50%; left: 50%; width: 100%; height: 100%; transform: translate(-50%, -50%) scale(1.02); border: none; }
 
-        /* Marquee Logic Infinity Loop - TETAP SAMA */
+        /* Marquee Logic Infinity Loop - VERSI FINAL RAPI */
         @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         @keyframes scroll-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
         
-        /* 1. Tambahkan height di sini agar baris 1 & 2 tingginya sama persis */
         .marquee-container { 
             overflow: hidden; 
             width: 100%; 
-            height: 90px; /* <--- Kunci tinggi kontainer di sini */
-            display: flex; /* <--- Biar konten di dalamnya bisa di-center */
-            align-items: center; /* <--- Menjaga middle align */
+            display: flex; 
+            align-items: center; 
+            padding: 2rem 0; /* Menggantikan py-8 di HTML agar Baris 1 & 2 identik */
             mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); 
             -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); 
         }
 
-        /* 2. Pastikan content selalu di tengah secara vertikal */
         .marquee-content { 
             display: flex; 
             width: max-content; 
             gap: 2rem; 
             align-items: center; 
-            height: 100%; /* <--- Paksa ikut tinggi container */
         }
         
         .tool-item {
@@ -95,15 +92,33 @@
             transition: all 0.4s ease; 
             filter: grayscale(1); 
             opacity: 0.5;
-            height: 42px; /* <--- Kunci tinggi item agar seragam */
+            height: 42px; /* Kunci tinggi kapsul agar seragam */
         }
 
-        .tool-item:hover { filter: grayscale(0); opacity: 1; background: white; border-color: var(--gold-deep); transform: translateY(-2px); }
+        .tool-item:hover { 
+            filter: grayscale(0); 
+            opacity: 1; 
+            background: white; 
+            border-color: var(--gold-deep); 
+            transform: translateY(-2px); 
+        }
+
+        /* Mengunci ukuran icon agar tidak mendorong tinggi baris */
+        .tool-item svg { 
+            width: 24px !important; 
+            height: 24px !important; 
+            flex-shrink: 0; 
+            display: block;
+        }
         
-        /* 3. Pastikan ukuran icon dikunci agar tidak mendorong baris */
-        .tool-item svg { width: 24px !important; height: 24px !important; flex-shrink: 0; }
-        
-        .tool-name { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #6B5E54; white-space: nowrap; }
+        .tool-name { 
+            font-size: 10px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.15em; 
+            color: #6B5E54; 
+            white-space: nowrap; 
+        }
 
         .headline-accent { position: relative; display: inline-block; }
         .headline-accent::after { content: ''; position: absolute; bottom: 0.1em; left: 0; width: 100%; height: 0.15em; background-color: rgba(176, 141, 62, 0.15); z-index: -1; }
